@@ -22,8 +22,6 @@ private:
     FilmMap			filmMap;
     AnimationFilm*	filmMem; // Ola ta films allocated as array
 
-	void CreateAnimationFilms (const FilmList & films);
-
 };
 
 }	//namespace engine

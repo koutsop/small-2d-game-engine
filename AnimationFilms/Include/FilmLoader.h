@@ -9,7 +9,11 @@ namespace engine {
 class FilmLoader {
 public:
 	typedef Film::FilmList	FilmList;
-	static void LoadFilm (const std::string & path, FilmList & films);
+	const FilmList Load (const std::string & path);
+
+private:
+	FilmList	films;
+	std::string path;
 };
 
 }	//naemspace engine

@@ -77,10 +77,12 @@
   <ItemGroup>
     <ClInclude Include="..\Include\Graphics.h" />
     <ClInclude Include="..\Include\KeyboardInput.h" />
+    <ClInclude Include="..\Include\MouseInput.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Src\Graphics.cpp" />
     <ClCompile Include="..\Src\KeyboardInput.cpp" />
+    <ClCompile Include="..\Src\MouseInput.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -7,7 +7,13 @@ namespace engine {
 
 class BBoxesLoader {
 public:
-	static void LoadBBodexs (const std::string & path, RectVec & bboxes);
+	BBoxesLoader (void);
+	const RectVec Load (const std::string & path_);
+
+private:
+	RectVec		bboxes;
+	std::string path;
+	
 };
 
 }	//namespace engine

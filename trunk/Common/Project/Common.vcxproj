@@ -44,12 +44,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>.\..\..\lib\debug\</OutDir>
-    <IntDir>.\..\..\objs\debug\Common</IntDir>
+    <IntDir>.\..\..\objs\debug\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>.\..\..\lib\release\</OutDir>
-    <IntDir>.\..\..\objs\release\Common</IntDir>
+    <IntDir>.\..\..\objs\release\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

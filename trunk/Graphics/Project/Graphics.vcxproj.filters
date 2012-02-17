@@ -18,9 +18,15 @@
     <ClInclude Include="..\Include\Graphics.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\Include\KeyboardInput.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Src\Graphics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\KeyboardInput.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

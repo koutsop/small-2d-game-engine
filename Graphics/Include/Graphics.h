@@ -11,7 +11,11 @@ namespace engine {
 
 	//---------------------------------------------------
 
-	bool InitGraphics (void);
+	void InitGraphics (void);
+
+	ALLEGRO_DISPLAY * Display (int w, int h);
+	void DestroyDisplay (void);
+	void Flip (void);
 
 	//---------------------------------------------------
 

@@ -50,6 +50,7 @@ struct Rect {
 struct Point {
 	int x, y;
 	Point () : x(0), y(0) {}
+	Point (int x_, int y_) : x(x_), y(y_) {}
 	Point (const Point &p) : x(p.x), y(p.y) {}
 
 	int		GetX (void)

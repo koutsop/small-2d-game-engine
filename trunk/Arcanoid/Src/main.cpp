@@ -30,6 +30,8 @@ const int BOUNCER_SIZE = 32;
 
 using namespace engine;
 
+static bool False (void) { return false; }
+
 int main(int argc, char **argv)
 {
 	//engine::InitGraphics();
@@ -84,23 +86,22 @@ int main(int argc, char **argv)
 
 
 	engine::InitGraphics();
-	ALLEGRO_DISPLAY * display = Display(640, 480);
-	//ALLEGRO_DISPLAY * display	= al_create_display(640, 480);
-	ALLEGRO_TIMER * timer		= al_create_timer(1.0 / 60);
+	engine::KeyboardInput::Initialise();
+	Display(640, 480);
 	
-
+	ALLEGRO_TIMER * timer		= al_create_timer(1.0 / 60);
 	Bitmap buffer = LoadBitmap (".\\..\\images\\BufferGameScreen.bmp");
 	Bitmap bg = LoadBitmap (".\\..\\images\\GameScreen.bmp");
 	engine::AnimationFilmHolder a(".\\..\\configsFiles\\films.cfg");
-	AnimationFilm  ball = a.GetFilm("ballsFilm");
+	
 
 	al_start_timer(timer);
 	ALLEGRO_EVENT_QUEUE *event_queue = al_create_event_queue();
-	al_register_event_source(event_queue, al_get_display_event_source(display));
 	al_register_event_source(event_queue, al_get_timer_event_source(timer));
 
-	while(1)
-	{
+	while(!engine::KeyboardInput::IsKeyActive(engine::KeyboardInput::KEY_ESCAPE)) {
+		engine::KeyboardInput::CheckInput();
+
 		ALLEGRO_EVENT ev;
 		al_wait_for_event(event_queue, &ev);
 
@@ -123,25 +124,24 @@ int main(int argc, char **argv)
 			redraw = false;
  
 			//Edw ka8arizoume to buffer bitmap pou exoume
-			al_set_target_bitmap(buffer);
-			al_draw_bitmap(bg, 0, 0, 0);
-			al_set_target_bitmap(al_get_backbuffer(display));
+			SetTargetBitmap(buffer);
+			DrawBitmap(bg, Point(0, 0));
+			SetBufferAsTargetBitmap();
 
 
 			//Edw zwgrafizoume sto buffer oti 8eloume
-			//to bitmap exei problhma tou animation ???
-			Bitmap b	= ball.GetBitmap();//LoadBitmap (".\\..\\images\\films\\ballsFilm.bmp");//
-			Rect r		= ball.GetFrameBox(0);
-			MaskedBlit(b, buffer, r, Point(bouncer_x, bouncer_y));
+			AnimationFilm  ball = a.GetFilm("ballsFilm");
+			Bitmap b			= ball.GetBitmap();
+			Rect r				= ball.GetFrameBox(0);
+			MaskedDraw(b, buffer, r, Point(bouncer_x, bouncer_y));
 			
 			//edw zografizoume sthn o8onh auto pou 8eloume
-			al_draw_bitmap(buffer, 0, 0, 0);
-			al_flip_display();
+			DrawBitmap(buffer, 0, 0);
+			FlipDisplay();
 		}
 	}
 
-	//engine::DestroyDisplay();
+	engine::DestroyDisplay();
 	DestroyBitmap(bg);
-	//DestroyBitmap(buffer);
-
+	DestroyBitmap(buffer);
 }

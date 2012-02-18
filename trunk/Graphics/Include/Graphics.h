@@ -11,11 +11,14 @@ namespace engine {
 
 	//---------------------------------------------------
 
-	void InitGraphics (void);
+	void	InitGraphics (void);
 
-	ALLEGRO_DISPLAY * Display (int w, int h);
-	void DestroyDisplay (void);
-	void Flip (void);
+	//---------------------------------------------------
+	void	Display (int w, int h);
+
+	//---------------------------------------------------
+
+	void	DestroyDisplay (void);
 
 	//---------------------------------------------------
 
@@ -23,11 +26,32 @@ namespace engine {
 
 	//---------------------------------------------------
 
-	void	DestroyBitmap (Bitmap);					
+	void	DestroyBitmap (Bitmap);		
 
 	//---------------------------------------------------
 
-	void	MaskedBlit (Bitmap source, Bitmap dest, const Rect & rect, const Point& at); 
+	void	DrawBitmap (Bitmap b, const Point& at);
+	void	DrawBitmap (Bitmap b, int x, int y);
+
+	//---------------------------------------------------
+
+	void	MaskedDraw (Bitmap source, Bitmap dest, const Rect & rect, const Point& at); 
+
+	//---------------------------------------------------
+
+	void	SetTargetBitmap (Bitmap b);
+
+	//---------------------------------------------------
+
+	void	SetBufferAsTargetBitmap (void);
+	
+	//---------------------------------------------------
+
+	void	FlipDisplay (void);
+
+			
+
+
 
 }	//namesapce engine
 

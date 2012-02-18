@@ -51,8 +51,9 @@ void CleanUpGraphics (void) {
 
 //---------------------------------------------------
 
-void Display (int w, int h) {
-	al_set_new_display_flags(ALLEGRO_FULLSCREEN);
+void Display (int w, int h, bool fullScreen) {
+	if (fullScreen)
+		al_set_new_display_flags(ALLEGRO_FULLSCREEN);
 	display = al_create_display(w, h);
 	CHECK_ALLEGRO_COMPONENT(display);
 }
@@ -131,6 +132,13 @@ void ConvertMaskToAlpha (Bitmap bitmap, int r, int g, int b) {
 void FlipDisplay (void) { 
 	assert(display);
 	al_flip_display(); 
+}
+
+//---------------------------------------------------
+
+void HideMouseCursor (void) {
+	assert(display);
+	al_hide_mouse_cursor (display);
 }
 
 

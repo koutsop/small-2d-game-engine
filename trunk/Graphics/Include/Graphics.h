@@ -15,7 +15,7 @@ namespace engine {
 	void	CleanUpGraphics (void);
 
 	//---------------------------------------------------
-	void	Display (int w, int h);
+	void	Display (int w, int h, bool fullScreen = false);
 
 	//---------------------------------------------------
 
@@ -52,11 +52,15 @@ namespace engine {
 	
 	//---------------------------------------------------
 
-	void ConvertMaskToAlpha (Bitmap bitmap, int r, int g, int b);
+	void	ConvertMaskToAlpha (Bitmap bitmap, int r, int g, int b);
 
 	//---------------------------------------------------
 	
 	void	FlipDisplay (void);
+
+	//---------------------------------------------------
+
+	void	HideMouseCursor (void);
 
 			
 

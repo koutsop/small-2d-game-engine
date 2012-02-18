@@ -2,7 +2,10 @@
 #include <stdlib.h>
 #include <iostream>
 #include <allegro5/allegro.h>	//to xriazetai h malakia allegro_image.h
+#include <allegro5/allegro_ttf.h>
+#include <allegro5/allegro_font.h>
 #include <allegro5/allegro_image.h>
+
 
 #include "Graphics.h"
 
@@ -27,13 +30,23 @@ namespace engine {
 
 //---------------------------------------------------
 
-void InitGraphics (void) {
+void InitialiseGraphics (void) {
 	if (!isInitialized) {
 		CHECK_ALLEGRO_COMPONENT(al_init());
+		al_init_font_addon();
+		CHECK_ALLEGRO_COMPONENT(al_init_ttf_addon());
 		CHECK_ALLEGRO_COMPONENT(al_init_image_addon());
 	}
 
 	isInitialized = true;
+}
+
+//---------------------------------------------------
+
+void CleanUpGraphics (void) {
+	al_shutdown_ttf_addon();
+	al_shutdown_font_addon();
+	al_shutdown_image_addon();
 }
 
 //---------------------------------------------------
@@ -78,12 +91,17 @@ void DrawBitmap (Bitmap b, int x, int y) {
 
 //---------------------------------------------------
 
-void MaskedDraw (Bitmap source, Bitmap dest, const Rect & rect, const Point& at) {
-	Bitmap b = al_create_sub_bitmap(source, rect.x, rect.y, rect.w, rect.h);
-	assert (b && display);
+void DrawSubBitmap (Bitmap source, const Rect & rect, const Point& at) {
+	assert(display);
+	al_draw_bitmap_region(source, rect.x, rect.y, rect.w, rect.h, at.x, at.y, 0);
+}
 
+//---------------------------------------------------
+
+void MaskedDraw (Bitmap source, Bitmap dest, const Rect & rect, const Point& at) {
+	assert(display);
 	al_set_target_bitmap(dest);
-	al_draw_bitmap(b, at.x, at.y, 0);
+	al_draw_bitmap_region(source, rect.x, rect.y, rect.w, rect.h, at.x, at.y, 0);
 	al_set_target_bitmap(al_get_backbuffer(display));
 }
 
@@ -99,6 +117,13 @@ void SetTargetBitmap (Bitmap b) {
 void SetBufferAsTargetBitmap (void) {
 	assert(display);
 	al_set_target_bitmap(al_get_backbuffer(display));
+}
+
+//---------------------------------------------------
+
+void ConvertMaskToAlpha (Bitmap bitmap, int r, int g, int b) {
+	assert(display);
+	al_convert_mask_to_alpha(bitmap, al_map_rgb(r, g, b));
 }
 
 //---------------------------------------------------

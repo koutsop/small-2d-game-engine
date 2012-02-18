@@ -26,6 +26,11 @@ void AnimationFilm::DisplayFrame (
 	MaskedDraw(bitmap, dest, GetFrameBox(frameNo), at);
 }
 
+//---------------------------------------------------
+
+void AnimationFilm::DisplayFrame (const Point&	at, std::size_t	frameNo) const 
+	{ DrawSubBitmap(bitmap, GetFrameBox(frameNo), at); }
+
 
 
 }	//namespace engine

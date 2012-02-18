@@ -1,7 +1,6 @@
 #include <assert.h>
 
 #include "BBoxesLoader.h"
-#include "BitmapLoader.h"
 #include "AnimationFilmHolder.h"
 
 namespace engine {

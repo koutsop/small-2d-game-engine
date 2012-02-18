@@ -18,6 +18,7 @@ public:
     const Rect				GetFrameBox (std::size_t frameNo) const
 								{ assert(boxes.size() > frameNo); return boxes[frameNo]; }
     void					DisplayFrame (Bitmap dest, const Point& at, std::size_t frameNo) const;
+	void					DisplayFrame (const Point& at, std::size_t frameNo) const;
 								
 	AnimationFilm (void);
 	AnimationFilm (Bitmap bitmap_, const RectVec & bbs, const std::string& id_);

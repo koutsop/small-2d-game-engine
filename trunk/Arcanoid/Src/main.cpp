@@ -1,3 +1,118 @@
+#if 0
+#include <stdio.h>
+#include <allegro5/allegro.h>
+#include <allegro5/allegro_image.h>
+
+const float FPS = 60;
+const int SCREEN_W = 640;
+const int SCREEN_H = 480;
+const int BOUNCER_SIZE = 32;
+ 
+int main(int argc, char **argv)
+{
+   ALLEGRO_DISPLAY *display = NULL;
+   ALLEGRO_EVENT_QUEUE *event_queue = NULL;
+   ALLEGRO_TIMER *timer = NULL;
+   ALLEGRO_BITMAP *bouncer = NULL;
+   float bouncer_x = SCREEN_W / 2.0 - BOUNCER_SIZE / 2.0;
+   float bouncer_y = SCREEN_H / 2.0 - BOUNCER_SIZE / 2.0;
+   float bouncer_dx = -4.0, bouncer_dy = 4.0;
+   bool redraw = true;
+ 
+   if(!al_init()) {
+      fprintf(stderr, "failed to initialize allegro!\n");
+      return -1;
+   }
+	al_init_image_addon();
+   timer = al_create_timer(1.0 / FPS);
+   if(!timer) {
+      fprintf(stderr, "failed to create timer!\n");
+      return -1;
+   }
+ 
+   display = al_create_display(SCREEN_W, SCREEN_H);
+   if(!display) {
+      fprintf(stderr, "failed to create display!\n");
+      al_destroy_timer(timer);
+      return -1;
+   }
+
+   bouncer = al_create_sub_bitmap(al_load_bitmap(".\\..\\images\\films\\ballsFilm.bmp"), 0, 0, 8, 8);
+   //bouncer = al_create_bitmap(BOUNCER_SIZE, BOUNCER_SIZE);
+   if(!bouncer) {
+      fprintf(stderr, "failed to create bouncer bitmap!\n");
+      al_destroy_display(display);
+      al_destroy_timer(timer);
+      return -1;
+   }
+ 
+   al_set_target_bitmap(bouncer);
+ 
+   al_clear_to_color(al_map_rgb(255, 0, 255));
+ 
+   al_set_target_bitmap(al_get_backbuffer(display));
+ 
+   event_queue = al_create_event_queue();
+   if(!event_queue) {
+      fprintf(stderr, "failed to create event_queue!\n");
+      al_destroy_bitmap(bouncer);
+      al_destroy_display(display);
+      al_destroy_timer(timer);
+      return -1;
+   }
+ 
+   al_register_event_source(event_queue, al_get_display_event_source(display));
+ 
+   al_register_event_source(event_queue, al_get_timer_event_source(timer));
+ 
+   al_clear_to_color(al_map_rgb(0,0,0));
+ 
+   al_flip_display();
+ 
+   al_start_timer(timer);
+ 
+   while(1) {
+      ALLEGRO_EVENT ev;
+      al_wait_for_event(event_queue, &ev);
+ 
+      if(ev.type == ALLEGRO_EVENT_TIMER) {
+         if(bouncer_x < 0 || bouncer_x > SCREEN_W - BOUNCER_SIZE) {
+            bouncer_dx = -bouncer_dx;
+         }
+ 
+         if(bouncer_y < 0 || bouncer_y > SCREEN_H - BOUNCER_SIZE) {
+            bouncer_dy = -bouncer_dy;
+         }
+ 
+         bouncer_x += bouncer_dx;
+         bouncer_y += bouncer_dy;
+ 
+         redraw = true;
+      }
+      else if(ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
+         break;
+      }
+ 
+      if(redraw && al_is_event_queue_empty(event_queue)) {
+         redraw = false;
+ 
+         al_clear_to_color(al_map_rgb(0,0,0));
+ 
+         al_draw_bitmap(bouncer, bouncer_x, bouncer_y, 0);
+ 
+         al_flip_display();
+      }
+   }
+ 
+   al_destroy_bitmap(bouncer);
+   al_destroy_timer(timer);
+   al_destroy_display(display);
+   al_destroy_event_queue(event_queue);
+ 
+   return 0;
+}
+#endif
+
 #include <stdio.h>
 #include <iostream>
 #include <string>
@@ -34,50 +149,6 @@ static bool False (void) { return false; }
 
 int main(int argc, char **argv)
 {
-	//engine::InitGraphics();
-	//al_init_primitives_addon();
-	//al_install_mouse();
-
-
-	//ALLEGRO_DISPLAY *display = al_create_display( 640, 480 );
-	//engine::KeyboardInput::Initialise();
-	//engine::MouseInput::Initialise();
-	//al_hide_mouse_cursor(display);
-
-	////ALLEGRO_MOUSE_STATE mouse_state;
-	//while(1){
-	//	al_clear_to_color( al_map_rgb( 0, 0, 0) );
-	//	al_draw_rectangle( Rectangle_X, Rectangle_Y, Rectangle_X + 50, Rectangle_Y + 50, al_map_rgb( 255, 210, 0 ), 1.0 );
-	//	al_flip_display();
-	//	//al_get_keyboard_state( &Key_State );
-	//	//al_get_mouse_state(&mouse_state);
-
-	//	engine::MouseInput::CheckInput();
-	//	engine::KeyboardInput::CheckInput();
-
-	//	if (engine::MouseInput::HasState(engine::MouseInput::MOUSE_STATE_MOVED_RIGHT) && Rectangle_X + 1 < 640)
-	//		Rectangle_X += 1;
-	//	if (engine::MouseInput::HasState(engine::MouseInput::MOUSE_STATE_MOVED_LEFT) && Rectangle_X - 1 > 0)
-	//		Rectangle_X -= 1;
-	//	
-	//	if (engine::MouseInput::HasState(engine::MouseInput::MOUSE_STATE_MOVED_DOWN) && Rectangle_Y + 1 < 480)
-	//		Rectangle_Y += 1;
-	//	if (engine::MouseInput::HasState(engine::MouseInput::MOUSE_STATE_MOVED_UP) && Rectangle_Y - 1 > 0)
-	//		Rectangle_Y -= 1;
-
-	//	if (engine::MouseInput::HasState(engine::MouseInput::MOUSE_STATE_KEY_RIGHT) && Rectangle_X + 1 < 640)
-	//		Rectangle_X += 1;
-	//	if (engine::MouseInput::HasState(engine::MouseInput::MOUSE_STATE_KEY_LEFT) && Rectangle_X - 1 > 0)
-	//		Rectangle_X -= 1;
-	//	
-	//}
-	//engine::AnimationFilmHolder a(".\\..\\configsFiles\\films.cfg");
-
-	//engine::MouseInput::CleanUp();
-	//engine::KeyboardInput::CleanUp();
-	//al_destroy_display( display );
-	//return 0;
-
 
 	float bouncer_x = SCREEN_W / 2.0 - BOUNCER_SIZE / 2.0;
 	float bouncer_y = SCREEN_H / 2.0 - BOUNCER_SIZE / 2.0;
@@ -85,7 +156,7 @@ int main(int argc, char **argv)
 	bool redraw = true;
 
 
-	engine::InitGraphics();
+	engine::InitialiseGraphics();
 	engine::KeyboardInput::Initialise();
 	Display(640, 480);
 	
@@ -134,6 +205,7 @@ int main(int argc, char **argv)
 			Bitmap b			= ball.GetBitmap();
 			Rect r				= ball.GetFrameBox(0);
 			MaskedDraw(b, buffer, r, Point(bouncer_x, bouncer_y));
+			//DrawSubBitmap(b, r, Point(bouncer_x, bouncer_y));
 			
 			//edw zografizoume sthn o8onh auto pou 8eloume
 			DrawBitmap(buffer, 0, 0);
@@ -144,4 +216,6 @@ int main(int argc, char **argv)
 	engine::DestroyDisplay();
 	DestroyBitmap(bg);
 	DestroyBitmap(buffer);
+	engine::CleanUpGraphics();
 }
+

@@ -15,8 +15,22 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Include\Clock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\Include\Common.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\Include\FPSCalculator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\Clock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\FPSCalculator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

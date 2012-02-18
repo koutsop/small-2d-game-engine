@@ -20,6 +20,9 @@
     <ProjectReference Include="..\..\Graphics\Project\Graphics.vcxproj">
       <Project>{ab97171c-6bd2-4f4b-916b-6efe419f67ed}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\..\Utility\Project\Utility.vcxproj">
+      <Project>{f6b27910-fe76-42ff-8291-9e5eb05f0bd9}</Project>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{C46FBFBE-1EDF-4EB3-A6A2-84C302C65643}</ProjectGuid>

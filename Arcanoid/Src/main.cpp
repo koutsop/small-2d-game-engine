@@ -130,6 +130,7 @@ int main(int argc, char **argv)
 #include "AnimationFilmHolder.h"
 #include "KeyboardInput.h"
 #include "MouseInput.h"
+#include "FPSCalculator.h"
 #include <allegro5/allegro_primitives.h>
 
 int Rectangle_X = 0;
@@ -211,6 +212,7 @@ int main(int argc, char **argv)
 			DrawBitmap(buffer, 0, 0);
 			FlipDisplay();
 		}
+		FPSCalculator::FPS();
 	}
 
 	engine::DestroyDisplay();

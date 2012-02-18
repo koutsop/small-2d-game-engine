@@ -6,8 +6,10 @@ namespace engine {
 //---------------------------------------------------
 
 BitmapLoader::~BitmapLoader() { 
-	for (BitmapMap::iterator i = bitmaps.begin(); i != bitmaps.end(); ++i)
+	for (BitmapMap::iterator i = bitmaps.begin(); i != bitmaps.end(); ++i) {
 		DestroyBitmap(i->second);
+		i->second = (Bitmap)0;
+	}
 	
 	bitmaps.clear();
 }

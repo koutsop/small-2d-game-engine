@@ -21,6 +21,7 @@ private:
 	typedef std::map<std::string, AnimationFilm*> FilmMap;
     FilmMap			filmMap;
     AnimationFilm*	filmMem; // Ola ta films allocated as array
+	BitmapLoader	bitmapLoader;
 
 };
 

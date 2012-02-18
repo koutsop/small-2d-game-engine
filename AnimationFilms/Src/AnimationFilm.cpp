@@ -23,7 +23,7 @@ void AnimationFilm::DisplayFrame (
 		const Point&	at, 
 		std::size_t		frameNo
 	) const {
-	MaskedBlit(bitmap, dest, GetFrameBox(frameNo), at);
+	MaskedDraw(bitmap, dest, GetFrameBox(frameNo), at);
 }
 
 

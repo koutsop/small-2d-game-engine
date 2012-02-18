@@ -11,7 +11,8 @@ namespace engine {
 
 	//---------------------------------------------------
 
-	void	InitGraphics (void);
+	void	InitialiseGraphics (void);
+	void	CleanUpGraphics (void);
 
 	//---------------------------------------------------
 	void	Display (int w, int h);
@@ -35,6 +36,10 @@ namespace engine {
 
 	//---------------------------------------------------
 
+	void	DrawSubBitmap (Bitmap source, const Rect & rect, const Point& at);
+
+	//---------------------------------------------------
+
 	void	MaskedDraw (Bitmap source, Bitmap dest, const Rect & rect, const Point& at); 
 
 	//---------------------------------------------------
@@ -47,6 +52,10 @@ namespace engine {
 	
 	//---------------------------------------------------
 
+	void ConvertMaskToAlpha (Bitmap bitmap, int r, int g, int b);
+
+	//---------------------------------------------------
+	
 	void	FlipDisplay (void);
 
 			

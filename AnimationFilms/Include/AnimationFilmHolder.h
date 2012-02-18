@@ -4,6 +4,7 @@
 #include <map>
 #include <string>
 #include "FilmLoader.h"
+#include "BitmapLoader.h"
 #include "AnimationFilm.h"
 
 namespace engine {

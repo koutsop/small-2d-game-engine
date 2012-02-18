@@ -15,24 +15,18 @@ struct PathEntry {
 		dx(p.dx), dy(p.dy), frame(p.frame),delay(p.delay){}
 };
 
+typedef std::list<PathEntry> PathEntryList;
 
 class MovingPathAnimation : public Animation {
 public:
-	typedef std::list<PathEntry> PathEntryList;
+    MovingPathAnimation (const PathEntryList& _path, animid_t id);
 
-    const PathEntryList&	GetPath (void) const 
-								{ return path; }
-    void					SetPath (const PathEntryList& p) 
-								{ path.clear(); path = p; }
-    
-	Animation*				Clone (animid_t newId) const
-								{ return new MovingPathAnimation(path, newId); }
-
-    MovingPathAnimation (const PathEntryList& _path, animid_t id) :
-	path(_path), Animation(id){}
+    const PathEntryList&	GetPath (void) const;
+    void					SetPath (const PathEntryList& p);
+	Animation*				Clone (animid_t newId) const;
 
 private:
-	std::list<PathEntry> path;
+	PathEntryList			path;
 };
 
 }	//namespace engine

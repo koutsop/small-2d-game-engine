@@ -10,33 +10,28 @@ AnimatorListPtr	AnimatorHolder::suspended;
 //---------------------------------------------------
 
 void AnimatorHolder::Pause (void) {
-	//startPauseTime = MyTime::GetSystemTime();
+	pauseTime						= Clock::GetSystemTime();
+	AnimatorListPtr::iterator start	= running.begin();
 
-	//std::list<Animator*>::iterator start	= running.begin();
-	//std::list<Animator*>::iterator end		= running.end();
-
-	//while(start!=end){
-	//	Animator * a = (*start);
-	//	start++;
-	//	running.remove(a);
-	//	paused.push_back(a);
-	//}
+	while(start != running.end()){
+		Animator * a = *start++;
+		running.remove(a);
+		paused.push_back(a);
+	}
 }
 
 //---------------------------------------------------
 
 void AnimatorHolder::Resum (void) {
-	//timestamp_t pauseTime = MyTime::GetSystemDiffTime( MyTime::GetSystemTime(), startPauseTime);
-	//std::list<Animator*>::iterator start	= paused.begin();
-	//std::list<Animator*>::iterator end		= paused.end();
+	timestamp_t diffTime			= Clock::DiffTime(Clock::GetSystemTime(), pauseTime);
+	AnimatorListPtr::iterator start	= paused.begin();
 
-	//while(start!=end){
-	//	Animator *a = (*start);
-	//	start++;
-	//	a->TimeShift(pauseTime);
-	//	paused.remove(a);
-	//	running.push_back(a);
-	//}
+	while(start != paused.end()){
+		Animator * a = *start++;
+		a->TimeShift(diffTime);
+		paused.remove(a);
+		running.push_back(a);
+	}
 }
 
 //---------------------------------------------------
@@ -66,9 +61,8 @@ void AnimatorHolder::MarkAsSuspended (Animator* a) {
 //---------------------------------------------------
 
 void AnimatorHolder::Progress (timestamp_t currTime) {
-	//std::for_each(
-	//	running.begin(), running.end(), ProgressFunctor(currTime)
-	//); 
+	for (AnimatorListPtr::iterator a = running.begin(); a != running.end(); ++a)
+		 (*a)->Progress(currTime);
 }
 
 

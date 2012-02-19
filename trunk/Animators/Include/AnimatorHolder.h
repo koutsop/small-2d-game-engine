@@ -1,7 +1,6 @@
 #ifndef ANIMATOR_HOLDER_H
 #define ANIMATOR_HOLDER_H
 
-#include <functional>
 #include "Clock.h"
 #include "Animator.h"
 
@@ -18,15 +17,6 @@ public:
 	static void Progress (timestamp_t currTime);
 
 private:
-	class ProgressFunctor : public std::unary_function<Animator*, void> {
-	    timestamp_t t;
-	public: 
-	    ProgressFunctor (timestamp_t _t) : t(_t){}
-
-		void operator()(Animator* a) const 
-			{ a->Progress(t); }
-	};
-
 	static timestamp_t		pauseTime;
 	static AnimatorListPtr	running, suspended, paused;
 };

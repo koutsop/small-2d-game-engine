@@ -1,19 +1,7 @@
-#include <iostream>
-#include <assert.h>
-#include "MouseInput.h"
 #include <allegro5/allegro.h>
 
-/////////////////////////////////////////////////////////
-////	Defines
-
-#define LOAD_ALLEGRO_COMPONENT(COMPONENT)		\
-	if (!COMPONENT()) {							\
-		std::cerr	<< "Failed to initialize: " \
-					<< #COMPONENT				\
-					<< std::endl;				\
-		std::abort();							\
-	} else
-
+#include "MouseInput.h"
+#include "GraphicsCommon.h"
 
 namespace engine {
 
@@ -49,7 +37,7 @@ void MouseInput::CheckInput (void) {
 void MouseInput::Initialise (void) {
 	if (!isInitialised) {
 		if (!al_is_mouse_installed())
-			LOAD_ALLEGRO_COMPONENT(al_is_mouse_installed);
+			CHECK_ALLEGRO_COMPONENT(al_is_mouse_installed());
 		
 		for (int key = MOUSE_STATE_KEY_LEFT; key < MOUSE_STATE_KEY_MIDLE; ++key)
 			states[key] = false;

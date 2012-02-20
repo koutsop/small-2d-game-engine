@@ -131,6 +131,7 @@ int main(int argc, char **argv)
 #include "KeyboardInput.h"
 #include "MouseInput.h"
 #include "FPSCalculator.h"
+#include "Audio.h"
 #include <allegro5/allegro_primitives.h>
 
 int Rectangle_X = 0;
@@ -158,14 +159,20 @@ int main(int argc, char **argv)
 
 
 	engine::InitialiseGraphics();
+	engine::Audio::Initialise();
 	engine::KeyboardInput::Initialise();
 	Display(640, 480);
 	
-	ALLEGRO_TIMER * timer		= al_create_timer(1.0 / 60);
-	Bitmap buffer = LoadBitmap (".\\..\\images\\BufferGameScreen.bmp");
-	Bitmap bg = LoadBitmap (".\\..\\images\\GameScreen.bmp");
+	ALLEGRO_TIMER * timer	= al_create_timer(1.0 / 60);
+	Bitmap buffer			= LoadBitmap (".\\..\\images\\BufferGameScreen.bmp");
+	Bitmap bg				= LoadBitmap (".\\..\\images\\GameScreen.bmp");
 	engine::AnimationFilmHolder a(".\\..\\configsFiles\\films.cfg");
+
+	engine::Audio trac1(".\\..\\1.ogg");
+	engine::Audio trac2(".\\..\\2.ogg");
 	
+	trac1.Play(PlayModeONCE);
+	//trac2.Play(PlayModeONCE);
 
 	al_start_timer(timer);
 	ALLEGRO_EVENT_QUEUE *event_queue = al_create_event_queue();
@@ -173,6 +180,7 @@ int main(int argc, char **argv)
 
 	while(!engine::KeyboardInput::IsKeyActive(engine::KeyboardInput::KEY_ESCAPE)) {
 		engine::KeyboardInput::CheckInput();
+		Clock::SetGameTime();
 
 		ALLEGRO_EVENT ev;
 		al_wait_for_event(event_queue, &ev);
@@ -212,7 +220,8 @@ int main(int argc, char **argv)
 			DrawBitmap(buffer, 0, 0);
 			FlipDisplay();
 		}
-		FPSCalculator::FPS();
+		FPSCalculator::CalcFPS();
+		std::cout << FPSCalculator::GetFPS() << std::endl;
 	}
 
 	engine::DestroyDisplay();

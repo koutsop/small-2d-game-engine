@@ -1,20 +1,6 @@
-#include <stdlib.h>
-#include <iostream>
 #include <assert.h>
 #include "KeyboardInput.h"
-
-
-/////////////////////////////////////////////////////////
-////	Defines
-
-#define LOAD_ALLEGRO_COMPONENT(COMPONENT)		\
-	if (!COMPONENT()) {							\
-		std::cerr	<< "Failed to initialize: " \
-					<< #COMPONENT				\
-					<< std::endl;				\
-		std::abort();							\
-	} else
-
+#include "GraphicsCommon.h"
 
 namespace engine {
 
@@ -46,7 +32,7 @@ void KeyboardInput::CheckInput (void) {
 void KeyboardInput::Initialise (void) {
 	if (!isInitialised) {
 		if (!al_is_keyboard_installed())
-			LOAD_ALLEGRO_COMPONENT(al_install_keyboard);
+			CHECK_ALLEGRO_COMPONENT(al_install_keyboard());
 
 		for (int key = KEY_A; key != KEY_MAX; ++key)
 			keys[key] = false;

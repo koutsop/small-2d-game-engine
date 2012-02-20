@@ -1,6 +1,4 @@
 #include <assert.h>
-#include <stdlib.h>
-#include <iostream>
 #include <allegro5/allegro.h>	//to xriazetai h malakia allegro_image.h
 #include <allegro5/allegro_ttf.h>
 #include <allegro5/allegro_font.h>
@@ -8,23 +6,11 @@
 
 
 #include "Graphics.h"
-
+#include "GraphicsCommon.h"
 
 
 static bool isInitialized			= false;
 static ALLEGRO_DISPLAY * display	= (ALLEGRO_DISPLAY *)0;
-
-
-/////////////////////////////////////////////////////////
-////	Defines
-
-#define CHECK_ALLEGRO_COMPONENT(COMPONENT)		\
-	if (!COMPONENT) {							\
-		std::cerr	<< "Failed to initialize: " \
-					<< #COMPONENT				\
-					<< std::endl;				\
-		std::abort();							\
-	} else
 
 namespace engine {
 

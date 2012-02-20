@@ -75,11 +75,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\Include\Audio.h" />
     <ClInclude Include="..\Include\Graphics.h" />
+    <ClInclude Include="..\Include\GraphicsCommon.h" />
     <ClInclude Include="..\Include\KeyboardInput.h" />
     <ClInclude Include="..\Include\MouseInput.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Src\Audio.cpp" />
     <ClCompile Include="..\Src\Graphics.cpp" />
     <ClCompile Include="..\Src\KeyboardInput.cpp" />
     <ClCompile Include="..\Src\MouseInput.cpp" />

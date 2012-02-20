@@ -81,6 +81,7 @@
     <ClInclude Include="..\Include\FrameRangeAnimation.h" />
     <ClInclude Include="..\Include\MovingAnimation.h" />
     <ClInclude Include="..\Include\MovingPathAnimation.h" />
+    <ClInclude Include="..\Include\TimeTickAnimation.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Src\FlashAnimation.cpp" />
@@ -88,6 +89,7 @@
     <ClCompile Include="..\Src\FrameRangeAnimation.cpp" />
     <ClCompile Include="..\Src\MovingAnimation.cpp" />
     <ClCompile Include="..\Src\MovingPathAnimation.cpp" />
+    <ClCompile Include="..\Src\TimeTickAnimation.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

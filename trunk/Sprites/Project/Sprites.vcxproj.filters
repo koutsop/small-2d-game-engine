@@ -15,24 +15,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Include\Clock.h">
+    <ClInclude Include="..\Include\Sprite.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Include\Common.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Include\FPSCalculator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Include\Utility.h">
+    <ClInclude Include="..\Include\CollisionChecker.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Src\Clock.cpp">
+    <ClCompile Include="..\Src\Sprite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Src\FPSCalculator.cpp">
+    <ClCompile Include="..\Src\CollisionChecker.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

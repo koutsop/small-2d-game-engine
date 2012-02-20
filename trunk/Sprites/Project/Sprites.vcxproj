@@ -76,6 +76,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\Include\CollisionChecker.h" />
+    <ClInclude Include="..\Include\DestructionManager.h" />
+    <ClInclude Include="..\Include\LatelyDestroyable.h" />
     <ClInclude Include="..\Include\Sprite.h" />
   </ItemGroup>
   <ItemGroup>
@@ -88,6 +90,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Src\CollisionChecker.cpp" />
+    <ClCompile Include="..\Src\DestructionManager.cpp" />
+    <ClCompile Include="..\Src\LatelyDestroyable.cpp" />
     <ClCompile Include="..\Src\Sprite.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

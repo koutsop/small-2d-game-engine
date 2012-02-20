@@ -3,6 +3,7 @@
 
 #include <list>
 #include "Clock.h"
+#include "LatelyDestroyable.h"
 
 namespace engine {
 
@@ -13,12 +14,11 @@ enum animatorstate_t {
 };
 
 
-class Animator {
+class Animator : public LatelyDestroyable {
 public:
 	typedef void (*FinishCallback)(Animator*, void*);
 
 	Animator (void); 
-	virtual ~Animator(){};
 
 	void			Stop (void);
 	bool			HasFinished (void) const;
@@ -26,6 +26,8 @@ public:
 	virtual void	Progress (timestamp_t currTime) = 0;
 	void			SetOnFinish (FinishCallback f, void* c=(void*) 0);
 	
+protected:
+	virtual ~Animator(void){};			//LatelyDestroyable design pattern
 
 protected:
 	void			NotifyStopped (void);

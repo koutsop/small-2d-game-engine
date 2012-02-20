@@ -4,14 +4,14 @@
 #include "Common.h"
 #include "Graphics.h"
 #include "AnimationFilm.h"
+#include "LatelyDestroyable.h"
 
 namespace engine {
 
 
-class Sprite {
+class Sprite : public LatelyDestroyable  {
 public:
     Sprite (Dim _x, Dim _y, AnimationFilm* film);
-	virtual ~Sprite () {}
 
     void			SetFrame (byte i);
     byte			GetFrame (void) const;
@@ -31,6 +31,9 @@ public:
 	virtual bool	Move (Dim x, Dim y) = 0;
 	virtual bool	CollisionCheck (Sprite* s);
     
+private:
+	virtual ~Sprite () {}		//LatelyDestroyable design pattern
+
 private:
     byte			frameNo;
     Rect			frameBox;

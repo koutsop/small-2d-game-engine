@@ -7,70 +7,71 @@
 namespace engine {
 
 
+struct Rect;
+struct Point;
+///////////////////////////////////////////////
+// Common typedefs
+typedef int					Dim;
+typedef unsigned char		byte;
+typedef std::vector<Rect>	RectVec;
+typedef std::list<Rect>		RectList;
+
 ///////////////////////////////////////////////
 // Common structs
 
 //----------------------------------------------------------
 
 struct Rect {
-	int x, y, w, h;
+	Dim x, y, w, h;
 
 	Rect () : x(0), y(0), w(0), h(0) {}
 		
-	Rect (int x_, int y_, int w_, int h_) :
+	Rect (Dim x_, Dim y_, Dim w_, Dim h_) :
 		x(x_),
 		y(y_),
 		w(w_),
 		h(h_)
 	{}
 
-	int		GetX (void)
+	Dim		GetX (void)
 				{ return x; }
-	void	SetX (int x_)
+	void	SetX (Dim x_)
 				{ x = x_; }
 	
-	int		GetY (void)
+	Dim		GetY (void)
 				{ return y; }
-	void	SetY (int y_)
+	void	SetY (Dim y_)
 				{ y = y_; }
 
-	int		GetWidth (void)
+	Dim		GetWidth (void)
 				{ return w; }
-	void	SetWidth (int width)
+	void	SetWidth (Dim width)
 				{ w = width; }
 
-	int		GetHeight (void)
+	Dim		GetHeight (void)
 				{ return h; }
-	void	SetHeight (int height)
+	void	SetHeight (Dim height)
 				{ h = height; }
 };
 
 //----------------------------------------------------------
 
 struct Point {
-	int x, y;
+	Dim x, y;
 	Point () : x(0), y(0) {}
-	Point (int x_, int y_) : x(x_), y(y_) {}
+	Point (Dim x_, Dim y_) : x(x_), y(y_) {}
 	Point (const Point &p) : x(p.x), y(p.y) {}
 
-	int		GetX (void)
+	Dim		GetX (void)
 				{ return x; }
-	void	SetX (int x_)
+	void	SetX (Dim x_)
 				{ x = x_; }
 	
-	int		GetY (void)
+	Dim		GetY (void)
 				{ return y; }
-	void	SetY (int y_)
+	void	SetY (Dim y_)
 				{ y = y_; }
 };
-
-
-///////////////////////////////////////////////
-// Common typedefs
-typedef std::vector<Rect>	RectVec;
-typedef std::list<Rect>		RectList;
-
-
 
 
 }	//namespace engine

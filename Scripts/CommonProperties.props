@@ -5,7 +5,7 @@
   <PropertyGroup />
   <ItemDefinitionGroup>
     <ClCompile>
-      <AdditionalIncludeDirectories>$(ALLEGRO5)\Include;.\..\Include;.\..\..\Utility\Include;.\..\..\Graphics\Include;.\..\..\Animators\Include;.\..\..\Animations\Include;.\..\..\AnimationFilms\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ALLEGRO5)\Include;.\..\Include;.\..\..\Utility\Include;.\..\..\Sprites\Include;.\..\..\Graphics\Include;.\..\..\Animators\Include;.\..\..\Animations\Include;.\..\..\AnimationFilms\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Lib>
       <AdditionalLibraryDirectories>

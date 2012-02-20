@@ -9,16 +9,12 @@ namespace engine {
 
 class AnimationFilm {
 public:
-	std::size_t				GetTotalFrames (void) const 
-								{ return boxes.size(); }
-    Bitmap					GetBitmap (void) const 
-								{ assert(bitmap); return bitmap; }
-    const std::string & 	GetId (void) const 
-								{ assert(id != ""); return id; }
-    const Rect				GetFrameBox (std::size_t frameNo) const
-								{ assert(boxes.size() > frameNo); return boxes[frameNo]; }
-    void					DisplayFrame (Bitmap dest, const Point& at, std::size_t frameNo) const;
-	void					DisplayFrame (const Point& at, std::size_t frameNo) const;
+	byte					GetTotalFrames (void) const;
+    Bitmap					GetBitmap (void) const;
+    const std::string & 	GetId (void) const;
+    const Rect				GetFrameBox (byte frameNo) const;
+    void					DisplayFrame (Bitmap dest, const Point& at, byte frameNo) const;
+	void					DisplayFrame (const Point& at, byte frameNo) const;
 								
 	AnimationFilm (void);
 	AnimationFilm (Bitmap bitmap_, const RectVec & bbs, const std::string& id_);

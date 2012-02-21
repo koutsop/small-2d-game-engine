@@ -40,8 +40,8 @@ void Audio::StopAll (void)
 
 //---------------------------------------------------
 
-void Audio::SetReserveNumber (int number)
-	{ reserveNumber = number; }
+void Audio::SetReserveNumber (int number) 
+	{  CHECK_ALLEGRO_COMPONENT(al_reserve_samples(reserveNumber = number)); }
 
 //---------------------------------------------------
 

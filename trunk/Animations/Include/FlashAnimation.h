@@ -7,14 +7,14 @@ namespace engine {
 
 class FlashAnimation : public Animation {
 public:
-    FlashAnimation (frame_t n, delay_t show, delay_t hide,animid_t id );
+    FlashAnimation (frame_t n, delay_t show, delay_t hide, animid_t id);
 
     void		SetRepetitions (frame_t n);
     frame_t		GetRepetitions (void) const;
-    void		SetHideDeay (delay_t d);
-    delay_t		GetHideDeay (void) const;
-    void		SetShowDeay (delay_t d);
-    delay_t		GetShowDeay (void) const;
+    void		SetHideDelay (delay_t d);
+    delay_t		GetHideDelay (void) const;
+    void		SetShowDelay (delay_t d);
+    delay_t		GetShowDelay (void) const;
     Animation*	Clone (animid_t newId) const;
 
 private:

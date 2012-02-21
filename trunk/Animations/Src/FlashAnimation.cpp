@@ -26,22 +26,22 @@ frame_t	FlashAnimation::GetRepetitions (void) const
 
 //---------------------------------------------------
 
-void FlashAnimation::SetHideDeay (delay_t d) 
+void FlashAnimation::SetHideDelay (delay_t d) 
 	{ hideDelay = d; }
 
 //---------------------------------------------------
 
-delay_t	FlashAnimation::GetHideDeay (void) const 
+delay_t	FlashAnimation::GetHideDelay (void) const 
 	{ return hideDelay; }
 
 //---------------------------------------------------
 
-void FlashAnimation::SetShowDeay (delay_t d) 
+void FlashAnimation::SetShowDelay (delay_t d) 
 	{ showDelay = d; }
 
 //---------------------------------------------------
 
-delay_t	FlashAnimation::GetShowDeay (void) const 
+delay_t	FlashAnimation::GetShowDelay (void) const 
 	{ return showDelay; }
 
 //---------------------------------------------------

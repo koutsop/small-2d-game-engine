@@ -27,6 +27,9 @@
     <ClInclude Include="..\Include\LatelyDestroyable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\Include\SpriteHolder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Src\Sprite.cpp">
@@ -39,6 +42,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\Src\DestructionManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\SpriteHolder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -65,5 +65,11 @@ void AnimatorHolder::Progress (timestamp_t currTime) {
 		 (*a)->Progress(currTime);
 }
 
+//---------------------------------------------------
+
+void AnimatorHolder::RemoveDeadAnimators (void) {
+	suspended.remove_if(CheckFunctor());
+}
+
 
 }

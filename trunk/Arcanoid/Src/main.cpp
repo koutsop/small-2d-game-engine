@@ -18,6 +18,7 @@
 #include "FPSCalculator.h"
 #include "Audio.h"
 #include "StateHolder.h"
+#include "Font.h"
 #include <allegro5/allegro_primitives.h>
 
 int Rectangle_X = 0;

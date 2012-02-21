@@ -73,6 +73,16 @@ struct Point {
 				{ y = y_; }
 };
 
+//----------------------------------------------------------
+
+struct Color {
+	byte red, green, blue, alpha;
+
+	Color (byte r, byte g, byte b, byte a = 0) 
+		: red(r), green(g), blue(b), alpha(a){}
+};
+
+
 
 }	//namespace engine
 

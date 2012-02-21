@@ -76,6 +76,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\Include\Audio.h" />
+    <ClInclude Include="..\Include\Font.h" />
     <ClInclude Include="..\Include\Graphics.h" />
     <ClInclude Include="..\Include\GraphicsCommon.h" />
     <ClInclude Include="..\Include\KeyboardInput.h" />
@@ -83,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Src\Audio.cpp" />
+    <ClCompile Include="..\Src\Font.cpp" />
     <ClCompile Include="..\Src\Graphics.cpp" />
     <ClCompile Include="..\Src\KeyboardInput.cpp" />
     <ClCompile Include="..\Src\MouseInput.cpp" />

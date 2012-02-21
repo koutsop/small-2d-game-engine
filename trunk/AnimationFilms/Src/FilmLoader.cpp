@@ -1,6 +1,4 @@
-#include <iostream>
-#include <allegro5/allegro.h>
-
+#include "ConfigFile.h"
 #include "FilmLoader.h"
 
 namespace engine {
@@ -9,23 +7,22 @@ const Film::FilmList FilmLoader::Load (const std::string & path_) {
 	if (path != path_) {
 		path = path_;
 		films.clear();
+		ConfigFile config;
 	
-		ALLEGRO_CONFIG * file = al_load_config_file(path.c_str());
-		if (file) {
-			ALLEGRO_CONFIG_SECTION * nextSection;
-			const char * section = al_get_first_config_section(file, &nextSection);
+		if (config.LoadFile(path)) {
+			const char * section = config.GetFistSection();
 		
 			while (section) {
 				if (strlen(section) > 0) {	//skip global section
 					films.push_back(
 						Film(
-							al_get_config_value(file, section, "id"),
-							al_get_config_value(file, section, "bitmap"),
-							al_get_config_value(file, section, "bboxes")
+							config.GetValue(section, "id"),
+							config.GetValue(section, "bitmap"),
+							config.GetValue(section, "bboxes")
 						)
 					);
 				}
-				section = al_get_next_config_section(&nextSection);
+				section = config.GetNextSection();
 			}
 		}
 	}

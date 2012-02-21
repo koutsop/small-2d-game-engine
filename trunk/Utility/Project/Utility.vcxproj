@@ -13,12 +13,16 @@
   <ItemGroup>
     <ClInclude Include="..\Include\Clock.h" />
     <ClInclude Include="..\Include\Common.h" />
+    <ClInclude Include="..\Include\ConfigFile.h" />
     <ClInclude Include="..\Include\FPSCalculator.h" />
+    <ClInclude Include="..\Include\StateHolder.h" />
     <ClInclude Include="..\Include\Utility.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Src\Clock.cpp" />
+    <ClCompile Include="..\Src\ConfigFile.cpp" />
     <ClCompile Include="..\Src\FPSCalculator.cpp" />
+    <ClCompile Include="..\Src\StateHolder.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{F6B27910-FE76-42FF-8291-9E5EB05F0BD9}</ProjectGuid>

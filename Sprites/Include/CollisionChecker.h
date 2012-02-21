@@ -29,14 +29,6 @@ private:
 
 	//////////////////////////////////////////
 	// functor(s)
-	struct CheckFunctor : public std::unary_function<CollisionPair, void> {
-		void operator()(const CollisionPair& p) { 
-			assert(p.sprites.first && p.sprites.second);
-			if (p.sprites.first->CollisionCheck(p.sprites.second))
-				p.collide(p.sprites.second);
-		}
-    };
-
     struct MatchFunctor : public std::unary_function<CollisionPair, bool> {
 		Sprite * s1, * s2;
 		MatchFunctor (Sprite * s1_, Sprite * s2_) : s1(s1_), s2(s2_) {} 

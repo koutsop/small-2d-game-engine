@@ -1,6 +1,8 @@
 #ifndef SPRITE_H
 #define SPRITE_H
 
+#include <list>
+#include <string>
 #include "Common.h"
 #include "Graphics.h"
 #include "AnimationFilm.h"
@@ -8,10 +10,14 @@
 
 namespace engine {
 
+class Sprite;
+typedef std::list<Sprite *> SpriteList;
 
 class Sprite : public LatelyDestroyable  {
 public:
-    Sprite (Dim _x, Dim _y, AnimationFilm* film);
+	
+
+    Sprite (Dim _x, Dim _y, AnimationFilm* film, const std::string& id_);
 
     void			SetFrame (byte i);
     byte			GetFrame (void) const;
@@ -26,21 +32,22 @@ public:
 	Rect			GetRect (void) const;
 	Dim				GetWidth (void) const;
 	Dim				GetHeight (void) const;
+	const std::string& 		
+					GetId (void) const; 
 
 	void			Display (Bitmap dest);
-	virtual bool	Move (Dim x, Dim y) = 0;
+	virtual void	Move (Dim x, Dim y) = 0;
 	virtual bool	CollisionCheck (Sprite* s);
     
-private:
+protected:
 	virtual ~Sprite () {}		//LatelyDestroyable design pattern
 
-private:
     byte			frameNo;
     Rect			frameBox;
     Dim				x, y;
     bool			isVisible;
     AnimationFilm*	currFilm;
-
+	std::string		id;
 };
 
 

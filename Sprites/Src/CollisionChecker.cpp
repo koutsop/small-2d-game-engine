@@ -1,5 +1,3 @@
-
-#include <algorithm>
 #include "CollisionChecker.h"
 
 namespace engine {
@@ -17,21 +15,20 @@ void CollisionChecker::Register (Sprite* s1, Sprite* s2, CollideCallback c) {
 
 void CollisionChecker::Cancel (Sprite* s1, Sprite* s2) {
 	assert (s1 && s2);
-	std::remove_if(
- 	    pairs.begin(), 
-		pairs.end(), 
-		MatchFunctor (s1, s2)
-	);
+	pairs.remove_if(MatchFunctor(s1, s2));
 }
 
 //---------------------------------------------------
 
 void CollisionChecker::Check (void) {
-	std::for_each(
- 	    pairs.begin(), 
-		pairs.end(), 
-		CheckFunctor()
-	);
+	std::list<CollisionPair>::iterator start	= pairs.begin();
+	std::list<CollisionPair>::iterator end		= pairs.end();
+
+	while (start != end) {	//mporei na kanoume cancel eno trexei to loop
+		CollisionPair & p = *start++;
+		if (p.sprites.first->CollisionCheck(p.sprites.second))
+			p.collide(p.sprites.second);
+	}	
 }
 
 

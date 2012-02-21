@@ -79,6 +79,7 @@
     <ClInclude Include="..\Include\DestructionManager.h" />
     <ClInclude Include="..\Include\LatelyDestroyable.h" />
     <ClInclude Include="..\Include\Sprite.h" />
+    <ClInclude Include="..\Include\SpriteHolder.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Graphics\Project\Graphics.vcxproj">
@@ -93,6 +94,7 @@
     <ClCompile Include="..\Src\DestructionManager.cpp" />
     <ClCompile Include="..\Src\LatelyDestroyable.cpp" />
     <ClCompile Include="..\Src\Sprite.cpp" />
+    <ClCompile Include="..\Src\SpriteHolder.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

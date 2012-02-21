@@ -11,6 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Src\Arcanoid.cpp" />
+    <ClCompile Include="..\Src\Brick.cpp" />
     <ClCompile Include="..\Src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -20,9 +22,19 @@
     <ProjectReference Include="..\..\Graphics\Project\Graphics.vcxproj">
       <Project>{ab97171c-6bd2-4f4b-916b-6efe419f67ed}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\..\Sprites\Project\Sprites.vcxproj">
+      <Project>{d2d42c52-d4d1-437d-a6f7-6aa615dd1dc5}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\Utility\Project\Utility.vcxproj">
       <Project>{f6b27910-fe76-42ff-8291-9e5eb05f0bd9}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Include\Arcanoid.h" />
+    <ClInclude Include="..\Include\Ball.h" />
+    <ClInclude Include="..\Include\Board.h" />
+    <ClInclude Include="..\Include\Brick.h" />
+    <ClInclude Include="..\Include\Nain.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{C46FBFBE-1EDF-4EB3-A6A2-84C302C65643}</ProjectGuid>

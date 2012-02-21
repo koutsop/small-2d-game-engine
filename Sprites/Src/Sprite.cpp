@@ -5,14 +5,14 @@ namespace engine {
 
 //---------------------------------------------------
 
-Sprite::Sprite (Dim _x, Dim _y, AnimationFilm* film)
+Sprite::Sprite (Dim _x, Dim _y, AnimationFilm* film, const std::string& id_)
 :	x(_x), 
 	y(_y), 
 	frameNo (0),
 	frameBox (),
 	currFilm(film), 
-	isVisible(true) { 
-	
+	isVisible(true),
+	id(id_){ 
 	frameNo = currFilm->GetTotalFrames(); 
 	SetFrame(0); 
 }
@@ -97,5 +97,9 @@ Dim	Sprite::GetWidth (void) const
 Dim	Sprite::GetHeight (void) const
 	{ return frameBox.h; }
 
+//---------------------------------------------------
+
+const std::string& Sprite::GetId (void) const
+	{ return id; }
 
 }	//namespace

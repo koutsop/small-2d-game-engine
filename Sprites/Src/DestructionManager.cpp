@@ -8,14 +8,14 @@ namespace engine {
 
 DestructionManager::ObjectList DestructionManager::dead;
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void DestructionManager::Register (LatelyDestroyable* o) {
 	assert(!o->IsAlive()); 
 	dead.push_back(o); 
 } 
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void DestructionManager::Commit (void) {
 	std::for_each(

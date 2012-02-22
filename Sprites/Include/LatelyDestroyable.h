@@ -9,12 +9,15 @@ namespace engine {
 
 class LatelyDestroyable {
 public:
+	///--- Constructors
+
 	LatelyDestroyable (void) 
 		: alive(true), inDestruction(false){}
 
 	LatelyDestroyable(const LatelyDestroyable& src)
 		: alive(src.alive), inDestruction(src.inDestruction) {}
 
+	///--- Class LatelyDestroyable API
 	bool IsAlive (void) const;
 	void Destroy (void);
 
@@ -26,12 +29,14 @@ private:
 	friend class DestructionManager;
 	friend class Delete;
 
-	//--- member variables
+	///--- member variables
+	
 	bool alive;
 	bool inDestruction;
 	
 	//----------------------------
-	//-- struct LatelyDestroyable::Delete	
+	///-- struct LatelyDestroyable::Delete	
+
 	struct Delete : public std::unary_function<LatelyDestroyable*, void>{ 
 		void operator()(LatelyDestroyable* o) const; 
 	};

@@ -5,7 +5,7 @@
 
 namespace engine {
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 AnimationFilmHolder::AnimationFilmHolder (const std::string & path) : filmMap(), bitmapLoader() {
 	int				nextFilmIndex = 0;
@@ -26,14 +26,14 @@ AnimationFilmHolder::AnimationFilmHolder (const std::string & path) : filmMap(),
 	}
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 AnimationFilmHolder::~AnimationFilmHolder() { 
 	filmMap.clear(); 
 	delete[] filmMem; 
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 const AnimationFilm& AnimationFilmHolder::GetFilm (const std::string & id) const {
 	FilmMap::const_iterator i = filmMap.find(id);

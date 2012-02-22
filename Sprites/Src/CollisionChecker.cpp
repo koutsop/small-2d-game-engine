@@ -2,23 +2,27 @@
 
 namespace engine {
 
+//-------------------------------------------------------//
+//---- Static Variables ---------------------------------//
+
 std::list<CollisionChecker::CollisionPair> CollisionChecker::pairs;
 
-//---------------------------------------------------
+//-------------------------------------------------------//
+//---- Class CollisionChecker ---------------------------//
 
 void CollisionChecker::Register (Sprite* s1, Sprite* s2, CollideCallback c) {
 	assert (s1 && s2);
 	pairs.push_back(CollisionPair(std::make_pair(s1, s2), c));
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void CollisionChecker::Cancel (Sprite* s1, Sprite* s2) {
 	assert (s1 && s2);
 	pairs.remove_if(MatchFunctor(s1, s2));
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void CollisionChecker::Check (void) {
 	std::list<CollisionPair>::iterator start	= pairs.begin();

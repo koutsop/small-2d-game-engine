@@ -5,7 +5,7 @@
 
 namespace engine {
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 Font::Font (int size) : font ((ALLEGRO_FONT*)0) {
 	font = al_load_ttf_font(
@@ -16,7 +16,7 @@ Font::Font (int size) : font ((ALLEGRO_FONT*)0) {
 	assert(font);
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 Font::Font (const std::string & path, int size, bool isTff) : font ((ALLEGRO_FONT*)0) {
 	if (isTff)
@@ -26,12 +26,12 @@ Font::Font (const std::string & path, int size, bool isTff) : font ((ALLEGRO_FON
 	assert(font);
 }
 	
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 Font::~Font () 
 	{ al_destroy_font(font); }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void Font::DrawText(const Color& c, float x, float y, TextAlign align, const std::string& text) {
 	al_draw_text(

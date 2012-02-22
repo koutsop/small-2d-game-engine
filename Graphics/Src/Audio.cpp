@@ -7,7 +7,7 @@ namespace engine {
 
 int	Audio::reserveNumber = 10;
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 Audio::Audio (const std::string path) 
 :	id(),
@@ -15,7 +15,7 @@ Audio::Audio (const std::string path)
 	data = al_load_sample (path.c_str());
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void Audio::Initialise (void) {
 	if (!al_is_audio_installed()) {
@@ -26,36 +26,36 @@ void Audio::Initialise (void) {
 	}
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void Audio::CleanUp (void) {
 	if (al_is_audio_installed())
 		al_uninstall_audio();
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void Audio::StopAll (void) 
 	{ al_stop_samples(); }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void Audio::SetReserveNumber (int number) 
 	{  CHECK_ALLEGRO_COMPONENT(al_reserve_samples(reserveNumber = number)); }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 int	Audio::GetReserveNumber (void) 
 	{ return reserveNumber; }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void Audio::Play (AudioPlayMode mode) { 
 	assert(al_is_audio_installed());
 	al_play_sample(data, 1.0, 0.0, 1.0, (ALLEGRO_PLAYMODE)mode, &id);	
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void Audio::Stop (void) 
 	{ al_stop_sample(&id); }

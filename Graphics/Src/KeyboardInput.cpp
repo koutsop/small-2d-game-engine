@@ -8,14 +8,14 @@ bool KeyboardInput::isInitialised = false;
 bool KeyboardInput::keys[KEY_MAX];
 
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 bool KeyboardInput::IsKeyActive (keyCode key) {
 	assert(key >= KEY_A && key < KEY_MAX);
 	return keys[key];
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void KeyboardInput::CheckInput (void) {
 	Initialise();
@@ -27,7 +27,7 @@ void KeyboardInput::CheckInput (void) {
 		keys[key] = al_key_down(&ret_state, key);
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void KeyboardInput::Initialise (void) {
 	if (!isInitialised) {
@@ -41,7 +41,7 @@ void KeyboardInput::Initialise (void) {
 	}
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void KeyboardInput::CleanUp (void) {
 	if (al_is_keyboard_installed())

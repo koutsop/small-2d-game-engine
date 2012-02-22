@@ -5,41 +5,47 @@
 
 namespace engine {
 
-SpriteList SpriteHolder::sprites;
+//-------------------------------------------------------//
+//---- Static Variables ---------------------------------//
 
-//---------------------------------------------------
+SpriteList					SpriteHolder::sprites;
+SpriteHolder::String2Sprite	SpriteHolder::str2sprite;
+
+//-------------------------------------------------------//
+//---- Class SpriteHolder -------------------------------//
 
 void SpriteHolder::Register (Sprite * s) { 
 	assert(s);
-	SpriteList::iterator i = std::find_if(
-								sprites.begin(), 
-								sprites.end(), 
-								FindFunctor(s->GetId())
-							);	
-	if (i != sprites.end())
+	if (!GetSprite(s->GetId()))
 		sprites.push_back(s); 
 }
 
-//---------------------------------------------------
+//-------------------------------------------------------------------------------------------
 
 void SpriteHolder::RemoveDeadSprites (void)
-	{ sprites.remove_if(CheckFunctor()); }
+	{ sprites.remove_if(RemoveFunctor()); }
 
-//---------------------------------------------------
+//-------------------------------------------------------------------------------------------
 
 const SpriteList& SpriteHolder::GetSprites (void)
 	{ return sprites; }
 
-//---------------------------------------------------
+//-------------------------------------------------------------------------------------------
 
 Sprite*	SpriteHolder::GetSprite (const std::string& id) {
-	SpriteList::iterator i = std::find_if(
-								sprites.begin(), 
-								sprites.end(), 
-								FindFunctor(id)
-							);
-	return i != sprites.end()? *i : (Sprite*)0;
+	String2Sprite::iterator i = str2sprite.find(id);
+	return i != str2sprite.end()? i->second : (Sprite*)0;
 }
 
+//-------------------------------------------------------//
+//---- struct RemoveFunctor -----------------------------//
+
+bool SpriteHolder::RemoveFunctor::operator()(Sprite* s) {
+	if (!s->IsAlive()) {
+		str2sprite.erase(s->GetId());
+		return true;
+	}
+	return false; 
+}
 
 }	//namespace engine

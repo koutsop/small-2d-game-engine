@@ -3,7 +3,7 @@
 namespace engine {
 
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 FrameListAnimation::FrameListAnimation (
 	const Frame_tList&	_frames, 
@@ -15,17 +15,17 @@ FrameListAnimation::FrameListAnimation (
 ):	frames(_frames), 
 	MovingAnimation(dx, dy, d, c, id){}
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 const Frame_tList& FrameListAnimation::GetFrames (void) const 
 	{ return frames; }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void FrameListAnimation::SetFrames (const Frame_tList& f) 
 	{ frames.clear(); frames = f; }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 Animation* FrameListAnimation::Clone (animid_t newId) const {
 	return new FrameListAnimation(

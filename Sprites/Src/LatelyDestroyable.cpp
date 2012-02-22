@@ -3,20 +3,20 @@
 namespace engine {
 
 
-//---------------------------------------------------
+//-------------------------------------------------------//
+//---- Class LatelyDestroyable --------------------------//
 
 void LatelyDestroyable::Delete::operator()(LatelyDestroyable* o) const { 
 	o->inDestruction = true; 
 	delete o; 
-	//o = (LatelyDestroyable*)0;
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 bool LatelyDestroyable::IsAlive (void) const 
 	{ return alive; }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void LatelyDestroyable::Destroy (void) { 
 	if (alive) {

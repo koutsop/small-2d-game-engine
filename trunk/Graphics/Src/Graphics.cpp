@@ -14,7 +14,7 @@ static ALLEGRO_DISPLAY * display	= (ALLEGRO_DISPLAY *)0;
 
 namespace engine {
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void InitialiseGraphics (void) {
 	if (!isInitialized) {
@@ -27,7 +27,7 @@ void InitialiseGraphics (void) {
 	isInitialized = true;
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void CleanUpGraphics (void) {
 	al_shutdown_ttf_addon();
@@ -35,7 +35,7 @@ void CleanUpGraphics (void) {
 	al_shutdown_image_addon();
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void Display (int w, int h, bool fullScreen) {
 	if (fullScreen)
@@ -44,21 +44,21 @@ void Display (int w, int h, bool fullScreen) {
 	CHECK_ALLEGRO_COMPONENT(display);
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void DestroyDisplay (void) {
 	assert(display);
 	al_destroy_display(display);
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 Bitmap	LoadBitmap (const std::string& path) { 
 	assert(display);
 	return al_load_bitmap(path.c_str()); 
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void DestroyBitmap (Bitmap b) { 
 	assert(b && display);
@@ -66,7 +66,7 @@ void DestroyBitmap (Bitmap b) {
 	b = (Bitmap)0;
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void DrawBitmap (Bitmap b, const Point& at) 
 	{ DrawBitmap(b, at.x, at.y); }
@@ -76,14 +76,14 @@ void DrawBitmap (Bitmap b, int x, int y) {
 	al_draw_bitmap(b, x, y, 0);
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void DrawSubBitmap (Bitmap source, const Rect & rect, const Point& at) {
 	assert(display);
 	al_draw_bitmap_region(source, rect.x, rect.y, rect.w, rect.h, at.x, at.y, 0);
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void MaskedDraw (Bitmap source, Bitmap dest, const Rect & rect, const Point& at) {
 	assert(display);
@@ -92,35 +92,35 @@ void MaskedDraw (Bitmap source, Bitmap dest, const Rect & rect, const Point& at)
 	al_set_target_bitmap(al_get_backbuffer(display));
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void SetTargetBitmap (Bitmap b) {
 	assert(b && display);
 	al_set_target_bitmap(b);
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void SetBufferAsTargetBitmap (void) {
 	assert(display);
 	al_set_target_bitmap(al_get_backbuffer(display));
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void ConvertMaskToAlpha (Bitmap bitmap, int r, int g, int b) {
 	assert(display);
 	al_convert_mask_to_alpha(bitmap, al_map_rgb(r, g, b));
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void FlipDisplay (void) { 
 	assert(display);
 	al_flip_display(); 
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void HideMouseCursor (void) {
 	assert(display);

@@ -7,7 +7,7 @@ short			FPSCalculator::fps			= 0;
 short			FPSCalculator::fpsCounter	= 0;
 timestamp_t		FPSCalculator::elapsedTime	= 0;
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void FPSCalculator::CalcFPS (void) {
 	++fpsCounter;
@@ -19,7 +19,7 @@ void FPSCalculator::CalcFPS (void) {
 	}
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 short FPSCalculator::GetFPS (void)
 	{ return fps; }

@@ -10,16 +10,21 @@ namespace engine {
 
 class CollisionChecker {
 public:
+	///--- class CollisionChecker Typedefs
 	typedef void (*CollideCallback)(Sprite * s);
 
+	///--- class CollisionChecker API
     static void Register (Sprite* s1, Sprite* s2, CollideCallback c);
     static void Cancel (Sprite* s1, Sprite* s2);
     static void Check (void);
 
 private:
-	//////////////////////////////////////////
-	// typedef(s)
+	///--- class CollisionChecker Typedefs
+
 	typedef std::pair<Sprite*, Sprite*> Pair;
+
+	//----------------------------
+	//-- struct CollisionChecker::CollisionPair
 
 	struct CollisionPair {
 		Pair			sprites;
@@ -27,9 +32,10 @@ private:
 		CollisionPair (const Pair & p, CollideCallback c) : sprites(p), collide(c) {}
 	};
 
-	//////////////////////////////////////////
-	// functor(s)
-    struct MatchFunctor : public std::unary_function<CollisionPair, bool> {
+	//----------------------------
+	//-- struct CollisionChecker::MatchFunctor
+    
+	struct MatchFunctor : public std::unary_function<CollisionPair, bool> {
 		Sprite * s1, * s2;
 		MatchFunctor (Sprite * s1_, Sprite * s2_) : s1(s1_), s2(s2_) {} 
 		bool operator()(const CollisionPair& p) { 
@@ -39,8 +45,7 @@ private:
 		}
     };
 
-	//////////////////////////////////////////
-	// private members
+	///--- private Member Variables
     static std::list<CollisionPair> pairs;
 };
 

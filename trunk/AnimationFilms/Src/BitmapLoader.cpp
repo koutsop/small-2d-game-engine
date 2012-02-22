@@ -3,7 +3,7 @@
 
 namespace engine {
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 BitmapLoader::~BitmapLoader() { 
 	for (BitmapMap::iterator i = bitmaps.begin(); i != bitmaps.end(); ++i) {
@@ -14,7 +14,7 @@ BitmapLoader::~BitmapLoader() {
 	bitmaps.clear();
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 Bitmap BitmapLoader::Load (const std::string& path) {
 	Bitmap b = GetBitmap(path);
@@ -25,7 +25,7 @@ Bitmap BitmapLoader::Load (const std::string& path) {
 	return b;
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 Bitmap BitmapLoader::GetBitmap (const std::string path) const {
 	BitmapMap::const_iterator i = bitmaps.find(path);

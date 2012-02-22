@@ -5,7 +5,7 @@ namespace engine {
 
 AnimationFilm::AnimationFilm (void) : bitmap((Bitmap)0), boxes (), id ("") {}
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
     
 AnimationFilm::AnimationFilm (
 	Bitmap				bitmap_, 
@@ -16,7 +16,7 @@ AnimationFilm::AnimationFilm (
 	id(id_)
 {}
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void AnimationFilm::DisplayFrame (
 		Bitmap			dest, 
@@ -26,27 +26,27 @@ void AnimationFilm::DisplayFrame (
 	MaskedDraw(bitmap, dest, GetFrameBox(frameNo), at);
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void AnimationFilm::DisplayFrame (const Point&	at, byte frameNo) const 
 	{ DrawSubBitmap(bitmap, GetFrameBox(frameNo), at); }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 byte AnimationFilm::GetTotalFrames (void) const 
 	{ return boxes.size(); }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 Bitmap AnimationFilm::GetBitmap (void) const 
 	{ assert(bitmap); return bitmap; }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 const std::string & AnimationFilm::GetId (void) const 
 	{ assert(id != ""); return id; }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 const Rect AnimationFilm::GetFrameBox (byte frameNo) const
 	{ assert(boxes.size() > frameNo); return boxes[frameNo]; }

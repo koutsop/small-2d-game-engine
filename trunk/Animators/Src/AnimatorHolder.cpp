@@ -7,7 +7,7 @@ AnimatorListPtr	AnimatorHolder::paused;
 AnimatorListPtr AnimatorHolder::running; 
 AnimatorListPtr	AnimatorHolder::suspended;
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void AnimatorHolder::Pause (void) {
 	pauseTime						= Clock::GetSystemTime();
@@ -20,7 +20,7 @@ void AnimatorHolder::Pause (void) {
 	}
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void AnimatorHolder::Resum (void) {
 	timestamp_t diffTime			= Clock::DiffTime(Clock::GetSystemTime(), pauseTime);
@@ -34,38 +34,38 @@ void AnimatorHolder::Resum (void) {
 	}
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void AnimatorHolder::Register (Animator* a) 
 	{ suspended.push_back(a); }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void AnimatorHolder::Cancel (Animator* a) 
 	{ suspended.remove(a); }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void AnimatorHolder::MarkAsRunning (Animator* a) { 
 	suspended.remove(a); 
 	running.push_back(a); 
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void AnimatorHolder::MarkAsSuspended (Animator* a) { 
 	running.remove(a); 
 	suspended.push_back(a); 
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void AnimatorHolder::Progress (timestamp_t currTime) {
 	for (AnimatorListPtr::iterator a = running.begin(); a != running.end(); ++a)
 		 (*a)->Progress(currTime);
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void AnimatorHolder::RemoveDeadAnimators (void) {
 	suspended.remove_if(CheckFunctor());

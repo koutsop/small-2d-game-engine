@@ -15,10 +15,10 @@ typedef std::list<Sprite *> SpriteList;
 
 class Sprite : public LatelyDestroyable  {
 public:
-	
-
+	///--- Constructors
     Sprite (Dim _x, Dim _y, AnimationFilm* film, const std::string& id_);
 
+	///--- Class Sprite API
     void			SetFrame (byte i);
     byte			GetFrame (void) const;
     void			SetVisibility (bool v);
@@ -42,6 +42,7 @@ public:
 protected:
 	virtual ~Sprite () {}		//LatelyDestroyable design pattern
 
+	///--- protected Member Variables
     byte			frameNo;
     Rect			frameBox;
     Dim				x, y;

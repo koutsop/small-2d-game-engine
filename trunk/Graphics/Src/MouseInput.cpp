@@ -10,14 +10,14 @@ int	MouseInput::old_y;
 bool MouseInput::isInitialised;
 bool MouseInput::states[MOUSE_STATE_MAX];
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 bool MouseInput::HasState (MouseState state) {
 	assert(state >= MOUSE_STATE_KEY_LEFT && state < MOUSE_STATE_MAX);
 	return states[state];
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void MouseInput::CheckInput (void) {
 	Initialise();
@@ -32,7 +32,7 @@ void MouseInput::CheckInput (void) {
 	CheckForMovment();
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void MouseInput::Initialise (void) {
 	if (!isInitialised) {
@@ -46,7 +46,7 @@ void MouseInput::Initialise (void) {
 	}
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void MouseInput::CleanUp (void) {
 	if (al_is_mouse_installed())
@@ -54,7 +54,7 @@ void MouseInput::CleanUp (void) {
 	isInitialised = false;
 }	
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void MouseInput::CheckForMovment (void) {
 	int x, y;

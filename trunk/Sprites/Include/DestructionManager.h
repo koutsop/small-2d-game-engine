@@ -8,13 +8,15 @@ class LatelyDestroyable;
 
 class DestructionManager {
 public:
+	///--- class DestructionManager API
 	static void Register (LatelyDestroyable* o);
 	static void Commit (void);
 
 private:
-	//--- private Member Variables
+	///--- class DestructionManager Typedefs
 	typedef std::list<LatelyDestroyable*> ObjectList;
 	
+	///--- private Member Variables
 	static ObjectList dead;
 };
 

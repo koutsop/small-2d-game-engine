@@ -2,7 +2,7 @@
 
 namespace engine {
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void FrameRangeAnimator::Progress (timestamp_t currTime) {
 	if(currTime - lastTime >= anim->GetDelay()){
@@ -22,7 +22,7 @@ void FrameRangeAnimator::Progress (timestamp_t currTime) {
 	}
 }
 
-//---------------------------------------------------
+//-----------------------------------------------------------------------
 
 void FrameRangeAnimator::Start (Sprite* s, FrameRangeAnimation* a, timestamp_t t) {
 	sprite		= s;

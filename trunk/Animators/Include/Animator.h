@@ -3,6 +3,7 @@
 
 #include <list>
 #include "Clock.h"
+#include "Animation.h"
 #include "LatelyDestroyable.h"
 
 namespace engine {
@@ -24,6 +25,8 @@ public:
 	bool			HasFinished (void) const;
 	virtual void	TimeShift (timestamp_t offset);
 	virtual void	Progress (timestamp_t currTime) = 0;
+	virtual Animation*
+					GetAnimation (void) = 0;
 	void			SetOnFinish (FinishCallback f, void* c=(void*) 0);
 	
 protected:

@@ -1,5 +1,5 @@
-#ifndef ANIMATOR_HOLDER_H
-#define ANIMATOR_HOLDER_H
+#ifndef ANIMATOR_MANAGER_H
+#define ANIMATOR_MANAGER_H
 
 #include <functional>
 #include "Clock.h"
@@ -7,16 +7,19 @@
 
 namespace engine {
 
-class AnimatorHolder {
+class AnimatorManager {
 public:
 	static void Pause (void);
 	static void Resum (void);
+	static void Clear (void);
 	static void Register (Animator* a);
+	//stop animator if is running,
+	//and destroy it
 	static void Cancel (Animator* a);
 	static void MarkAsRunning (Animator* a);
 	static void MarkAsSuspended (Animator* a);
 	static void Progress (timestamp_t currTime);
-	static void RemoveDeadAnimators (void);
+	//static void RemoveDeadAnimators (void);
 
 private:
 	static timestamp_t		pauseTime;
@@ -30,4 +33,4 @@ private:
 
 }	//namespace engine
 
-#endif //ANIMATOR_HOLDER_H
+#endif //ANIMATOR_MANAGER_H

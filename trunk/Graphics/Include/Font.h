@@ -2,6 +2,7 @@
 #define FONT_H
 
 #include <string>
+#include <allegro5/allegro.h>
 #include <allegro5/allegro_font.h>
 
 #include "Common.h"

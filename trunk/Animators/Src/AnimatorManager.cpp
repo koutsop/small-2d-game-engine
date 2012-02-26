@@ -1,15 +1,16 @@
 #include <algorithm>
-#include "AnimatorHolder.h"
+#include "AnimatorManager.h"
 
 namespace engine {
 
-AnimatorListPtr	AnimatorHolder::paused;
-AnimatorListPtr AnimatorHolder::running; 
-AnimatorListPtr	AnimatorHolder::suspended;
+timestamp_t		AnimatorManager::pauseTime;
+AnimatorListPtr	AnimatorManager::paused;
+AnimatorListPtr AnimatorManager::running; 
+AnimatorListPtr	AnimatorManager::suspended;
 
 //-----------------------------------------------------------------------
 
-void AnimatorHolder::Pause (void) {
+void AnimatorManager::Pause (void) {
 	pauseTime						= Clock::GetSystemTime();
 	AnimatorListPtr::iterator start	= running.begin();
 
@@ -22,7 +23,7 @@ void AnimatorHolder::Pause (void) {
 
 //-----------------------------------------------------------------------
 
-void AnimatorHolder::Resum (void) {
+void AnimatorManager::Resum (void) {
 	timestamp_t diffTime			= Clock::DiffTime(Clock::GetSystemTime(), pauseTime);
 	AnimatorListPtr::iterator start	= paused.begin();
 
@@ -36,40 +37,72 @@ void AnimatorHolder::Resum (void) {
 
 //-----------------------------------------------------------------------
 
-void AnimatorHolder::Register (Animator* a) 
+void AnimatorManager::Clear (void) {
+	std::for_each(
+		running.begin(),
+		running.end(),
+		std::mem_fn(&Animator::Destroy)
+	);
+
+	std::for_each(
+		suspended.begin(),
+		suspended.end(),
+		std::mem_fn(&Animator::Destroy)
+	);
+
+	std::for_each(
+		paused.begin(),
+		paused.end(),
+		std::mem_fn(&Animator::Destroy)
+	);
+
+	paused.clear();
+	running.clear();
+	suspended.clear();
+}
+
+//-----------------------------------------------------------------------
+
+void AnimatorManager::Register (Animator* a) 
 	{ suspended.push_back(a); }
 
 //-----------------------------------------------------------------------
 
-void AnimatorHolder::Cancel (Animator* a) 
-	{ suspended.remove(a); }
+void AnimatorManager::Cancel (Animator* a) { 
+	if (!a->HasFinished()) {
+		a->Stop();
+		MarkAsSuspended(a);
+	}
+	suspended.remove(a); 
+	a->Destroy();
+}
 
 //-----------------------------------------------------------------------
 
-void AnimatorHolder::MarkAsRunning (Animator* a) { 
+void AnimatorManager::MarkAsRunning (Animator* a) { 
 	suspended.remove(a); 
 	running.push_back(a); 
 }
 
 //-----------------------------------------------------------------------
 
-void AnimatorHolder::MarkAsSuspended (Animator* a) { 
+void AnimatorManager::MarkAsSuspended (Animator* a) { 
 	running.remove(a); 
 	suspended.push_back(a); 
 }
 
 //-----------------------------------------------------------------------
 
-void AnimatorHolder::Progress (timestamp_t currTime) {
+void AnimatorManager::Progress (timestamp_t currTime) {
 	for (AnimatorListPtr::iterator a = running.begin(); a != running.end(); ++a)
 		 (*a)->Progress(currTime);
 }
 
 //-----------------------------------------------------------------------
 
-void AnimatorHolder::RemoveDeadAnimators (void) {
-	suspended.remove_if(CheckFunctor());
-}
+//void AnimatorManager::RemoveDeadAnimators (void) {
+//	suspended.remove_if(CheckFunctor());
+//}
 
 
 }

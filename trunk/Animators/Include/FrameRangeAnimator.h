@@ -14,11 +14,14 @@ public:
 		anim		((FrameRangeAnimation*) 0), 
 		currFrame	(0xFF){}
 	
-	void Progress (timestamp_t currTime);
-	void Start (Sprite* s, FrameRangeAnimation* a, timestamp_t t);
+	void			Progress (timestamp_t currTime);
+	void			Start (Sprite* s, FrameRangeAnimation* a, timestamp_t t);
+	virtual Animation*
+					GetAnimation (void);
+
 
 protected:
-	virtual ~FrameRangeAnimator(void) {}			//LatelyDestroyable design pattern
+	virtual			~FrameRangeAnimator(void) {}			//LatelyDestroyable design pattern
 
 private:
 	Sprite*			sprite;

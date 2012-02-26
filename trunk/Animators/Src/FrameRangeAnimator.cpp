@@ -31,4 +31,10 @@ void FrameRangeAnimator::Start (Sprite* s, FrameRangeAnimation* a, timestamp_t t
 	state		= ANIMATOR_RUNNING;
 	sprite->SetFrame(currFrame = anim->GetStartFrame());
 }	
+
+//-----------------------------------------------------------------------
+
+Animation* FrameRangeAnimator::GetAnimation (void)
+	{ return anim; }
+
 }

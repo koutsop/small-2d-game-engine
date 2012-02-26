@@ -25,6 +25,9 @@ public:
     void					SetPath (const PathEntryList& p);
 	Animation*				Clone (animid_t newId) const;
 
+protected:
+	virtual					~MovingPathAnimation() {} 			//LatelyDestroyable design pattern
+
 private:
 	PathEntryList			path;
 };

@@ -14,7 +14,6 @@ public:
 		bool		c, 
 		animid_t	_id
     );
-	virtual ~MovingAnimation (void) {}
 
 	offset_t	GetDx (void) const;
     void	    SetDx (offset_t v);
@@ -25,6 +24,9 @@ public:
     bool		GetContinuous (void) const;
     void	 	SetContinuous (bool v);
     Animation*	Clone (animid_t newId) const;
+
+protected:
+	virtual		~MovingAnimation (void) {}			//LatelyDestroyable design pattern
 
 private:
 	offset_t	dx, dy;

@@ -12,7 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Include\Animator.h" />
-    <ClInclude Include="..\Include\AnimatorHolder.h" />
+    <ClInclude Include="..\Include\AnimatorManager.h" />
     <ClInclude Include="..\Include\FlashAnimator.h" />
     <ClInclude Include="..\Include\FrameListAnimator.h" />
     <ClInclude Include="..\Include\MovingAnimator.h" />
@@ -22,7 +22,7 @@
   <ItemGroup>
     <ClCompile Include="..\Include\FrameRangeAnimator.h" />
     <ClCompile Include="..\Src\Animator.cpp" />
-    <ClCompile Include="..\Src\AnimatorHolder.cpp" />
+    <ClCompile Include="..\Src\AnimatorManager.cpp" />
     <ClCompile Include="..\Src\FrameRangeAnimator.cpp" />
     <ClCompile Include="..\Src\MovingAnimator.cpp" />
     <ClCompile Include="..\Src\TimeTickAnimator.cpp" />

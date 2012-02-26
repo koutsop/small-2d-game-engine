@@ -1,6 +1,7 @@
 #ifndef BRICK_H
 #define BRICK_H
 
+#include <string>
 #include "Common.h"
 #include "Sprite.h"
 #include "AnimationFilm.h"

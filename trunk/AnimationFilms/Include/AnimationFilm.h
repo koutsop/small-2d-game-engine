@@ -11,8 +11,8 @@ class AnimationFilm {
 public:
 	byte					GetTotalFrames (void) const;
     Bitmap					GetBitmap (void) const;
-    const std::string & 	GetId (void) const;
-    const Rect				GetFrameBox (byte frameNo) const;
+    const std::string&	 	GetId (void) const;
+    const Rect&				GetFrameBox (byte frameNo) const;
     void					DisplayFrame (Bitmap dest, const Point& at, byte frameNo) const;
 	void					DisplayFrame (const Point& at, byte frameNo) const;
 								

@@ -9,10 +9,13 @@
 #include "GraphicsCommon.h"
 
 
-static bool isInitialized			= false;
-static ALLEGRO_DISPLAY * display	= (ALLEGRO_DISPLAY *)0;
 
 namespace engine {
+
+static bool isInitialized			= false;
+static Bitmap canvas				= (Bitmap)0;
+static ALLEGRO_DISPLAY * display	= (ALLEGRO_DISPLAY *)0;
+
 
 //-----------------------------------------------------------------------
 
@@ -22,6 +25,8 @@ void InitialiseGraphics (void) {
 		al_init_font_addon();
 		CHECK_ALLEGRO_COMPONENT(al_init_ttf_addon());
 		CHECK_ALLEGRO_COMPONENT(al_init_image_addon());
+		canvas	= (Bitmap)0;
+		display	= (ALLEGRO_DISPLAY *)0;
 	}
 
 	isInitialized = true;
@@ -53,15 +58,13 @@ void DestroyDisplay (void) {
 
 //-----------------------------------------------------------------------
 
-Bitmap	LoadBitmap (const std::string& path) { 
-	assert(display);
-	return al_load_bitmap(path.c_str()); 
-}
+Bitmap	LoadBitmap (const std::string& path) 
+	{ return al_load_bitmap(path.c_str()); }
 
 //-----------------------------------------------------------------------
 
 void DestroyBitmap (Bitmap b) { 
-	assert(b && display);
+	assert(b);
 	al_destroy_bitmap(b);
 	b = (Bitmap)0;
 }
@@ -87,21 +90,24 @@ void DrawSubBitmap (Bitmap source, const Rect & rect, const Point& at) {
 
 void MaskedDraw (Bitmap source, Bitmap dest, const Rect & rect, const Point& at) {
 	assert(display);
-	al_set_target_bitmap(dest);
+	if (canvas != dest)
+		al_set_target_bitmap(dest);
 	al_draw_bitmap_region(source, rect.x, rect.y, rect.w, rect.h, at.x, at.y, 0);
-	al_set_target_bitmap(al_get_backbuffer(display));
+	
+	if (canvas != dest)
+		al_set_target_bitmap(canvas);
 }
 
 //-----------------------------------------------------------------------
 
-void SetTargetBitmap (Bitmap b) {
+void SetCanvas (Bitmap b) {
 	assert(b && display);
-	al_set_target_bitmap(b);
+	al_set_target_bitmap(canvas = b);
 }
 
 //-----------------------------------------------------------------------
 
-void SetBufferAsTargetBitmap (void) {
+void SetBufferAsCanvas (void) {
 	assert(display);
 	al_set_target_bitmap(al_get_backbuffer(display));
 }

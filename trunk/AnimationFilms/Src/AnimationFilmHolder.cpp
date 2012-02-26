@@ -41,4 +41,12 @@ const AnimationFilm& AnimationFilmHolder::GetFilm (const std::string & id) const
 	return *i->second;
 }
 
+
+//-----------------------------------------------------------------------
+
+AnimationFilm& AnimationFilmHolder::GetFilm (const std::string & id){
+	FilmMap::iterator i = filmMap.find(id);
+	assert(i != filmMap.end());
+	return *i->second;
+}
 }

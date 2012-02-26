@@ -33,10 +33,10 @@ int	Brick::GetHits (void) const
 //-----------------------------------------------------------------------
 
 bool Brick::IsUnbreakable (void) const
-{ return unbreakable; }
+	{ return unbreakable; }
 
 //-----------------------------------------------------------------------
 
 void Brick::Move (engine::Dim x, engine::Dim y) {
-	
+	assert (!"not suported yet");
 }

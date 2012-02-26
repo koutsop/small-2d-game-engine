@@ -17,6 +17,9 @@ public:
     delay_t		GetShowDelay (void) const;
     Animation*	Clone (animid_t newId) const;
 
+protected:
+	virtual		~FlashAnimation() {}			//LatelyDestroyable design pattern
+
 private:
 	frame_t		repetitions;
     delay_t		hideDelay;

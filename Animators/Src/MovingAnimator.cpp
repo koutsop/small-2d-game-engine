@@ -27,4 +27,10 @@ void MovingAnimator::Start(Sprite* s, MovingAnimation* a, timestamp_t t) {
 	lastTime 	= t;
 	state 		= ANIMATOR_RUNNING;
 }
+
+//-----------------------------------------------------------------------
+
+Animation* MovingAnimator::GetAnimation (void)
+	{ return anim; }
+
 }

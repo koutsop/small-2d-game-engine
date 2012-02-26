@@ -44,11 +44,11 @@ namespace engine {
 
 	//-----------------------------------------------------------------------
 
-	void	SetTargetBitmap (Bitmap b);
+	void	SetCanvas (Bitmap b);
 
 	//-----------------------------------------------------------------------
 
-	void	SetBufferAsTargetBitmap (void);
+	void	SetBufferAsCanvas (void);
 	
 	//-----------------------------------------------------------------------
 

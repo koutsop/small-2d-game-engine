@@ -21,7 +21,8 @@ public:
     void				SetFrames (const Frame_tList& f);
     Animation*			Clone (animid_t newId) const;
 
-
+protected:
+	virtual				~FrameListAnimation(){}			//LatelyDestroyable design pattern
 
 private:
 	Frame_tList			frames;

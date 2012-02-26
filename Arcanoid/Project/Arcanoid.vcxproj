@@ -13,11 +13,19 @@
   <ItemGroup>
     <ClCompile Include="..\Src\Arcanoid.cpp" />
     <ClCompile Include="..\Src\Brick.cpp" />
+    <ClCompile Include="..\Src\BrickHolder.cpp" />
     <ClCompile Include="..\Src\main.cpp" />
+    <ClCompile Include="..\Src\Terrain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\AnimationFilms\Project\AnimationFilms.vcxproj">
       <Project>{7991d3ba-5eed-4718-86e4-108bef4dac01}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Animations\Project\Animations.vcxproj">
+      <Project>{b36fa22c-0c66-40c5-967e-2368bfb1fbe6}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Animators\Project\Animators.vcxproj">
+      <Project>{78c4eea7-0e87-48f7-8bca-aad6be3dcebb}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\Graphics\Project\Graphics.vcxproj">
       <Project>{ab97171c-6bd2-4f4b-916b-6efe419f67ed}</Project>
@@ -34,7 +42,9 @@
     <ClInclude Include="..\Include\Ball.h" />
     <ClInclude Include="..\Include\Board.h" />
     <ClInclude Include="..\Include\Brick.h" />
+    <ClInclude Include="..\Include\BrickHolder.h" />
     <ClInclude Include="..\Include\Nain.h" />
+    <ClInclude Include="..\Include\Terrain.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{C46FBFBE-1EDF-4EB3-A6A2-84C302C65643}</ProjectGuid>

@@ -19,6 +19,9 @@ public:
 
 	virtual Animation*	Clone (animid_t newId) const;
 
+protected:
+	virtual				~TimeTickAnimation () {}			//LatelyDestroyable design pattern
+
 private:
 	delay_t		delay;
 	byte		repetitions;

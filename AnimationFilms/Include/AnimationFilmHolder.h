@@ -14,7 +14,8 @@ public:
     AnimationFilmHolder (const std::string & path);			// Decoder constructor.
     ~AnimationFilmHolder();
 
-    const AnimationFilm& GetFilm (const std::string & id) const;
+    const AnimationFilm&	GetFilm (const std::string & id) const;
+	AnimationFilm&			GetFilm (const std::string & id);
 
 	
 private:	

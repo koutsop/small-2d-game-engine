@@ -40,6 +40,7 @@ public:
 	ConfigFile ();
 	~ConfigFile ();
 
+	bool			IsLoaded (void) const;
 	bool			LoadFile (const std::string & path);
 	const char *	GetFistSection (void);
 	const char *	GetNextSection (void);

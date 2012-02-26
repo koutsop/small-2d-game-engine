@@ -2,6 +2,7 @@
 #define	ANIMATION_H
 
 #include <list>
+#include "LatelyDestroyable.h"
 
 namespace engine {
 
@@ -12,13 +13,15 @@ typedef unsigned char		frame_t;
 typedef std::list<frame_t>	Frame_tList;
 
 
-class Animation  {
+class Animation : public LatelyDestroyable {
 public:
 	Animation (animid_t _id) : id(_id){}
-	virtual ~Animation(){}
 
 	animid_t			GetId (void) { return id; }
 	virtual Animation*	Clone (animid_t newId) const = 0;
+
+protected:
+	virtual ~Animation(){}			//LatelyDestroyable design pattern
 
 private:
 	animid_t id;

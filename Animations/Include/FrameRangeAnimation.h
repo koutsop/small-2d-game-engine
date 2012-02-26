@@ -23,6 +23,9 @@ public:
     void	    SetEndFrame (frame_t v);
 	Animation*	Clone (animid_t newId) const;
 
+protected:
+	virtual		~FrameRangeAnimation (){}			//LatelyDestroyable design pattern
+
 private:
 	frame_t start, end;
 };

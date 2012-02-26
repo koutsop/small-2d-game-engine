@@ -19,6 +19,12 @@
     <Filter Include="Source Files\Character">
       <UniqueIdentifier>{94d21327-1fa7-4cac-b2ac-9fe012c304ca}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Character\Brick">
+      <UniqueIdentifier>{493e79b6-50b6-41b8-9c6a-c85967b1081c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Character\Brick">
+      <UniqueIdentifier>{a83250cf-e19f-4576-a02a-c191e512da62}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Src\main.cpp">
@@ -28,7 +34,13 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\Src\Brick.cpp">
-      <Filter>Source Files\Character</Filter>
+      <Filter>Source Files\Character\Brick</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\BrickHolder.cpp">
+      <Filter>Source Files\Character\Brick</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Terrain.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -45,7 +57,13 @@
       <Filter>Header Files\Character</Filter>
     </ClInclude>
     <ClInclude Include="..\Include\Brick.h">
-      <Filter>Header Files\Character</Filter>
+      <Filter>Header Files\Character\Brick</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\BrickHolder.h">
+      <Filter>Header Files\Character\Brick</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\Terrain.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

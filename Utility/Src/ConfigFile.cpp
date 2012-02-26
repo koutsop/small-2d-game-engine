@@ -20,6 +20,11 @@ ConfigFile::~ConfigFile () {
 
 //-----------------------------------------------------------------------
 
+bool ConfigFile::IsLoaded (void) const
+	{ return file; }
+
+//-----------------------------------------------------------------------
+
 bool ConfigFile::LoadFile (const std::string & path) 
 	{ return file = al_load_config_file(path.c_str()); }
 

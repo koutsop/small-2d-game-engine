@@ -48,7 +48,7 @@ const std::string & AnimationFilm::GetId (void) const
 
 //-----------------------------------------------------------------------
 
-const Rect AnimationFilm::GetFrameBox (byte frameNo) const
+const Rect& AnimationFilm::GetFrameBox (byte frameNo) const
 	{ assert(boxes.size() > frameNo); return boxes[frameNo]; }
 
 }	//namespace engine

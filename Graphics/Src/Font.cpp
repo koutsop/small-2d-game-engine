@@ -9,7 +9,7 @@ namespace engine {
 
 Font::Font (int size) : font ((ALLEGRO_FONT*)0) {
 	font = al_load_ttf_font(
-				"./../Fonts/AirmoleAntique.ttf", 
+				"./../../Graphics/Fonts/AirmoleAntique.ttf", 
 				size, 
 				ALLEGRO_TTF_NO_KERNING
 			);

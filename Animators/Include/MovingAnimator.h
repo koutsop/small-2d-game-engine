@@ -11,11 +11,13 @@ class MovingAnimator : public Animator {
 public:
 	MovingAnimator (void): sprite((Sprite*) 0), anim((MovingAnimation*) 0){}
 	
-	void Progress (timestamp_t currTime);
-	void Start (Sprite* s, MovingAnimation* a, timestamp_t t);
+	void			Progress (timestamp_t currTime);
+	void			Start (Sprite* s, MovingAnimation* a, timestamp_t t);
+	virtual Animation*
+					GetAnimation (void);
 
 protected:
-virtual ~MovingAnimator(){}			//LatelyDestroyable design pattern
+	virtual			~MovingAnimator (){}			//LatelyDestroyable design pattern
 
 private:
 	Sprite*				sprite;

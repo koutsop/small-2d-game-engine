@@ -33,22 +33,22 @@ struct Rect {
 		h(h_)
 	{}
 
-	Dim		GetX (void)
+	Dim		GetX (void) const
 				{ return x; }
 	void	SetX (Dim x_)
 				{ x = x_; }
 	
-	Dim		GetY (void)
+	Dim		GetY (void) const
 				{ return y; }
 	void	SetY (Dim y_)
 				{ y = y_; }
 
-	Dim		GetWidth (void)
+	Dim		GetWidth (void) const
 				{ return w; }
 	void	SetWidth (Dim width)
 				{ w = width; }
 
-	Dim		GetHeight (void)
+	Dim		GetHeight (void) const
 				{ return h; }
 	void	SetHeight (Dim height)
 				{ h = height; }
@@ -62,12 +62,12 @@ struct Point {
 	Point (Dim x_, Dim y_) : x(x_), y(y_) {}
 	Point (const Point &p) : x(p.x), y(p.y) {}
 
-	Dim		GetX (void)
+	Dim		GetX (void) const
 				{ return x; }
 	void	SetX (Dim x_)
 				{ x = x_; }
 	
-	Dim		GetY (void)
+	Dim		GetY (void) const
 				{ return y; }
 	void	SetY (Dim y_)
 				{ y = y_; }

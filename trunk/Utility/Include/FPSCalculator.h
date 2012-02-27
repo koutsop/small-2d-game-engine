@@ -8,13 +8,15 @@ namespace engine {
 
 class FPSCalculator {
 public:
-	static void CalcFPS (void);
-	static short GetFPS (void);
+	FPSCalculator ();
+
+	void		CalcFPS (void);
+	short		GetFPS (void);
 
 private:
-	static short		fps;
-	static short		fpsCounter;
-	static timestamp_t	elapsedTime;
+	short		fps;
+	short		fpsCounter;
+	timestamp_t	elapsedTime;
 };
 
 }	//namespace engine

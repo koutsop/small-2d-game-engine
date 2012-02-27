@@ -15,7 +15,7 @@
     <ClCompile Include="..\Src\Brick.cpp" />
     <ClCompile Include="..\Src\BrickHolder.cpp" />
     <ClCompile Include="..\Src\main.cpp" />
-    <ClCompile Include="..\Src\Terrain.cpp" />
+    <ClCompile Include="..\Src\TerrainLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\AnimationFilms\Project\AnimationFilms.vcxproj">
@@ -44,7 +44,7 @@
     <ClInclude Include="..\Include\Brick.h" />
     <ClInclude Include="..\Include\BrickHolder.h" />
     <ClInclude Include="..\Include\Nain.h" />
-    <ClInclude Include="..\Include\Terrain.h" />
+    <ClInclude Include="..\Include\TerrainLoader.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{C46FBFBE-1EDF-4EB3-A6A2-84C302C65643}</ProjectGuid>

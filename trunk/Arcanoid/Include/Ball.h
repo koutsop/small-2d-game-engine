@@ -13,11 +13,18 @@ public:
 		engine::Dim				x, 
 		engine::Dim				y, 
 		engine::AnimationFilm*	film,
-		const std::string&		id_
+		const std::string&		id_,
+		const engine::Rect&		terrainBoundaries
 	);
 
-	void CollideWithBrick (Brick *b);
-	virtual void Move (engine::Dim x, engine::Dim y);
+	void			CollideWithBrick (Brick *b);
+	void			IncreaseSpeed (void);
+	void			DecreaseSpeed (void);
+	virtual void	Move (engine::Dim x, engine::Dim y);
+
+private:
+	engine::byte	speed;
+	engine::Rect	bound;
 };
 
 

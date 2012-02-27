@@ -3,9 +3,11 @@
 
 namespace engine {
 
-short			FPSCalculator::fps			= 0;
-short			FPSCalculator::fpsCounter	= 0;
-timestamp_t		FPSCalculator::elapsedTime	= 0;
+FPSCalculator::FPSCalculator () 
+:	fps			(0),
+	fpsCounter	(0),
+	elapsedTime	(0)
+{}
 
 //-----------------------------------------------------------------------
 

@@ -39,7 +39,7 @@
     <ClCompile Include="..\Src\BrickHolder.cpp">
       <Filter>Source Files\Character\Brick</Filter>
     </ClCompile>
-    <ClCompile Include="..\Src\Terrain.cpp">
+    <ClCompile Include="..\Src\TerrainLoader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -62,7 +62,7 @@
     <ClInclude Include="..\Include\BrickHolder.h">
       <Filter>Header Files\Character\Brick</Filter>
     </ClInclude>
-    <ClInclude Include="..\Include\Terrain.h">
+    <ClInclude Include="..\Include\TerrainLoader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

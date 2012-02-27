@@ -1,9 +1,30 @@
 #include <assert.h>
 #include <allegro5/allegro_ttf.h>
 #include "Font.h"
+#include "GraphicsCommon.h"
 
 
 namespace engine {
+
+bool Font::isInitialized = false;
+
+//-----------------------------------------------------------------------
+
+void Font::Initialise (void) {
+	if (!isInitialized) {
+		al_init_font_addon();
+		CHECK_ALLEGRO_COMPONENT(al_init_ttf_addon());
+	}
+	isInitialized = true;
+}
+
+//-----------------------------------------------------------------------
+
+void Font::CleanUp (void){
+	isInitialized = false;
+	al_shutdown_ttf_addon();
+	al_shutdown_font_addon();
+}
 
 //-----------------------------------------------------------------------
 

@@ -1,12 +1,13 @@
 #include <stdlib.h>
 #include <assert.h>
+
 #include "Utility.h"
-#include "Terrain.h"
+#include "TerrainLoader.h"
 #include "BBoxesLoader.h"
 #include "BitmapLoader.h"
 
 
-bool Terrain::Load (const std::string& path) {
+bool TerrainLoader::Load (const std::string& path) {
 	bool result = false;
 	engine::ConfigFile config;
 
@@ -23,36 +24,10 @@ bool Terrain::Load (const std::string& path) {
 	}
 	return result;
 }
-
-void Terrain::Display(engine::Bitmap dest) {
-	font.DrawTextW(
-		engine::Color(255, 255, 255), 
-		lifes.pos.x, 
-		lifes.pos.y, 
-		engine::Font::TextAlignLEFT, 
-		engine::string_cast<int>(lifes.lifes)
-	);
-
-	font.DrawTextW(
-		engine::Color(255, 255, 255), 
-		scorePos.x, 
-		scorePos.y, 
-		engine::Font::TextAlignLEFT, 
-		engine::string_cast(1453)
-	);
-
-	font.DrawTextW(
-		engine::Color(255, 255, 255), 
-		levels.pos.x, 
-		levels.pos.y, 
-		engine::Font::TextAlignLEFT, 
-		engine::string_cast<int>(levels.crrLevel)
-	);
-}
 	
 //-----------------------------------------------------------------------
 
-void Terrain::LoadScreenInfo (engine::ConfigFile& config) {
+void TerrainLoader::LoadScreenInfo (engine::ConfigFile& config) {
 	screen.w			= atoi(config.GetValue("RESOLUTION", "w"));
 	screen.h			= atoi(config.GetValue("RESOLUTION", "h"));
 	screen.fullScreen	= engine::StringToBool(config.GetValue("RESOLUTION", "fullScreen"));
@@ -60,20 +35,21 @@ void Terrain::LoadScreenInfo (engine::ConfigFile& config) {
 
 //-----------------------------------------------------------------------
 
-void Terrain::LoadTerrainInfo (engine::ConfigFile& config) {
+void TerrainLoader::LoadTerrainInfo (engine::ConfigFile& config) {
 	assert(config.IsLoaded());
 
-	terrain.x			= atoi(config.GetValue("TERRAIN", "x"));
-	terrain.y			= atoi(config.GetValue("TERRAIN", "y"));
-	terrain.w			= atoi(config.GetValue("TERRAIN", "w"));
-	terrain.h			= atoi(config.GetValue("TERRAIN", "h"));
+	terrain.bound.x		= atoi(config.GetValue("TERRAIN", "x"));
+	terrain.bound.y		= atoi(config.GetValue("TERRAIN", "y"));
+	terrain.bound.w		= atoi(config.GetValue("TERRAIN", "w"));
+	terrain.bound.h		= atoi(config.GetValue("TERRAIN", "h"));
 	terrain.bgImg		= config.GetValue("TERRAIN", "bgImg");
 	terrain.pauseImg	= config.GetValue("TERRAIN", "pauseImg");
+	terrain.gameover	= config.GetValue("TERRAIN", "gameover");
 }
 
 //-----------------------------------------------------------------------
 
-void Terrain::LoadFilmsInfo (engine::ConfigFile& config) {
+void TerrainLoader::LoadFilmsInfo (engine::ConfigFile& config) {
 	films.filmsPath		= config.GetValue("FILMS", "path");	
 	films.ballFilmID	= config.GetValue("FILMS", "ball");	
 	films.brickFilmID	= config.GetValue("FILMS", "brick");	
@@ -81,7 +57,7 @@ void Terrain::LoadFilmsInfo (engine::ConfigFile& config) {
 
 //-----------------------------------------------------------------------
 
-void Terrain::LoadPosition (
+void TerrainLoader::LoadPosition (
 		engine::ConfigFile& config ,
 		const char*			section, 
 		engine::Point&		pos
@@ -93,14 +69,14 @@ void Terrain::LoadPosition (
 
 //-----------------------------------------------------------------------
 
-void Terrain::LoadLifes (engine::ConfigFile& config) {
+void TerrainLoader::LoadLifes (engine::ConfigFile& config) {
 	LoadPosition(config, "LIFE", lifes.pos);
 	lifes.lifes	= atoi(config.GetValue("LIFE", "lifes"));
 }
 
 //-----------------------------------------------------------------------
 
-void Terrain::LoadLevels (engine::ConfigFile& config) {
+void TerrainLoader::LoadLevels (engine::ConfigFile& config) {
 	assert(config.IsLoaded());
 
 	//load display pos
@@ -116,63 +92,87 @@ void Terrain::LoadLevels (engine::ConfigFile& config) {
 
 //-----------------------------------------------------------------------
 
-engine::byte Terrain::GetNumberOfLevels (void) const
+engine::byte TerrainLoader::GetNumberOfLevels (void) const
 	{ return levels.crrLevel; }
 
 //-----------------------------------------------------------------------
 
-int Terrain::GetScreenWidth (void) const
+int TerrainLoader::GetScreenWidth (void) const
 	{ return screen.w; }
 
 //-----------------------------------------------------------------------
 
-int Terrain::GetScreenHeight (void) const
+int TerrainLoader::GetScreenHeight (void) const
 	{ return screen.h; }
 
 //-----------------------------------------------------------------------
 
-bool Terrain::IsFullScreen (void) const
+bool TerrainLoader::IsFullScreen (void) const
 	{ return screen.fullScreen; }
 
 //-----------------------------------------------------------------------
 
-const engine::Point Terrain::GetInitBallPosition (void) const
+const engine::Point& TerrainLoader::GetInitBallPosition (void) const
 	{ return ballPos; }
 
 //-----------------------------------------------------------------------
 
-const engine::Point	Terrain::GetInitBoardPosition (void) const
+const engine::Point& TerrainLoader::GetInitBoardPosition (void) const
 	{ return boardPos; }
 
 //-----------------------------------------------------------------------
 
-const std::string& Terrain::GetNextLevel (void) {
+const std::string& TerrainLoader::GetNextLevel (void) {
 	assert (levels.crrLevel + 1 < levels.levelsPath.size());
 	return levels.levelsPath[levels.crrLevel++];
 }
 
 //-----------------------------------------------------------------------
 
-const std::string& Terrain::GetFilmsPath (void) const
+const std::string& TerrainLoader::GetFilmsPath (void) const
 	{ return films.filmsPath; }
 
 //-----------------------------------------------------------------------
 
-const std::string& Terrain::GetBallFilmID (void) const
+const std::string& TerrainLoader::GetBallFilmID (void) const
 	{ return films.ballFilmID; }
 
 //-----------------------------------------------------------------------
 
-const std::string& Terrain::GetBrickFilmID (void) const
+const std::string& TerrainLoader::GetBrickFilmID (void) const
 	{ return films.brickFilmID; }
 
 //-----------------------------------------------------------------------
 
-const std::string& Terrain::GetBackgroundImgPath (void) const
+const std::string& TerrainLoader::GetBackgroundImgPath (void) const
 	{ return terrain.bgImg; }
 
 //-----------------------------------------------------------------------
 
-const std::string& Terrain::GetPausedImgPath (void) const
+const std::string& TerrainLoader::GetPausedImgPath (void) const
 	{ return terrain.pauseImg; }
 
+//-----------------------------------------------------------------------
+
+const std::string& TerrainLoader::GetGameOverImgPath (void) const
+	{ return terrain.gameover; }
+
+//-----------------------------------------------------------------------
+
+const engine::Rect&	TerrainLoader::GetTerrainBoundaries (void) const 
+	{ return terrain.bound; }
+
+//-----------------------------------------------------------------------
+
+const engine::Point& TerrainLoader::GetScorePos (void) const
+	{ return scorePos; }
+
+//-----------------------------------------------------------------------
+
+const engine::Point& TerrainLoader::GetLifePos (void) const
+	{ return lifes.pos; }
+
+//-----------------------------------------------------------------------
+
+const engine::Point& TerrainLoader::GetLevelPos (void) const
+	{ return levels.pos; }

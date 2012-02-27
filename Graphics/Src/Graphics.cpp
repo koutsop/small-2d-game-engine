@@ -22,8 +22,6 @@ static ALLEGRO_DISPLAY * display	= (ALLEGRO_DISPLAY *)0;
 void InitialiseGraphics (void) {
 	if (!isInitialized) {
 		CHECK_ALLEGRO_COMPONENT(al_init());
-		al_init_font_addon();
-		CHECK_ALLEGRO_COMPONENT(al_init_ttf_addon());
 		CHECK_ALLEGRO_COMPONENT(al_init_image_addon());
 		canvas	= (Bitmap)0;
 		display	= (ALLEGRO_DISPLAY *)0;
@@ -35,8 +33,7 @@ void InitialiseGraphics (void) {
 //-----------------------------------------------------------------------
 
 void CleanUpGraphics (void) {
-	al_shutdown_ttf_addon();
-	al_shutdown_font_addon();
+	isInitialized = false;
 	al_shutdown_image_addon();
 }
 

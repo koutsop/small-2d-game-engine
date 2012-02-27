@@ -20,11 +20,13 @@ public:
 	Font (int size);	//default tff font
 	Font (const std::string & path, int size, bool isTff = true);
 	~Font ();
-
-	void DrawText(const Color& c, float x, float y, TextAlign align, const std::string& text);
+	void		DrawText(const Color& c, float x, float y, TextAlign align, const std::string& text);
+	static void Initialise (void);
+	static void CleanUp (void);
 
 private:
-	ALLEGRO_FONT* font;
+	ALLEGRO_FONT*	font;
+	static bool		isInitialized;
 };
 
 

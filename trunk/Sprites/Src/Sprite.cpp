@@ -53,8 +53,12 @@ bool Sprite::CollisionCheck (Sprite* s) {
 }
 
 //-----------------------------------------------------------------------
-void Sprite::Display (Bitmap dest) 
-	{ currFilm->DisplayFrame(dest, Point(x, y), frameNo); }
+void Sprite::Display (Bitmap dest) { 
+	if (!dest)
+		currFilm->DisplayFrame(Point(x, y), frameNo); 
+	else
+		currFilm->DisplayFrame(dest, Point(x, y), frameNo); 
+}
 
 //-----------------------------------------------------------------------
 

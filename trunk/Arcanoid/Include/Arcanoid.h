@@ -30,7 +30,6 @@ private:
 	TerrainLoader				terrain;
 	engine::Font				font;
 	engine::Bitmap				bg;
-	engine::Bitmap				buffer;
 	engine::Bitmap				pause;
 	engine::Bitmap				gameover;
 	engine::FPSCalculator		fps;

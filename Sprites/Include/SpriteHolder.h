@@ -16,7 +16,7 @@ public:
 
 	static bool			Register (Sprite * s);
 	static void			Clear (void);	//marks all sprites as dead
-	static void			Display (Bitmap source);
+	static void			Display (Bitmap source = (Bitmap)0);
 	static bool			Cancel (const std::string& id); //marks the sprite as dead
 	//static void			RemoveDeadSprites (void);
 	static const SpriteList	

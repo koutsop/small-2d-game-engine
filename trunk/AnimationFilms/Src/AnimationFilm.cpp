@@ -3,12 +3,12 @@
 
 namespace engine {
 
-AnimationFilm::AnimationFilm (void) : bitmap((Bitmap)0), boxes (), id ("") {}
+AnimationFilm::AnimationFilm (void) : bitmap((Bitmap*)0), boxes (), id ("") {}
 
 //-----------------------------------------------------------------------
     
 AnimationFilm::AnimationFilm (
-	Bitmap				bitmap_, 
+	Bitmap*				bitmap_, 
 	const RectVec &		bbs, 
 	const std::string&	id_)
 :	bitmap(bitmap_),
@@ -19,7 +19,7 @@ AnimationFilm::AnimationFilm (
 //-----------------------------------------------------------------------
 
 void AnimationFilm::DisplayFrame (
-		Bitmap			dest, 
+		Bitmap*			dest, 
 		const Point&	at, 
 		byte			frameNo
 	) const {
@@ -38,7 +38,7 @@ byte AnimationFilm::GetTotalFrames (void) const
 
 //-----------------------------------------------------------------------
 
-Bitmap AnimationFilm::GetBitmap (void) const 
+Bitmap* AnimationFilm::GetBitmap (void) const 
 	{ assert(bitmap); return bitmap; }
 
 //-----------------------------------------------------------------------

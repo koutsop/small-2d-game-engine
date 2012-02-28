@@ -38,6 +38,7 @@ void TerrainLoader::LoadScreenInfo (engine::ConfigFile& config) {
 void TerrainLoader::LoadTerrainInfo (engine::ConfigFile& config) {
 	assert(config.IsLoaded());
 
+	terrain.maxScore	= atoi(config.GetValue("TERRAIN", "maxScore"));
 	terrain.bound.x		= atoi(config.GetValue("TERRAIN", "x"));
 	terrain.bound.y		= atoi(config.GetValue("TERRAIN", "y"));
 	terrain.bound.w		= atoi(config.GetValue("TERRAIN", "w"));
@@ -104,6 +105,11 @@ int TerrainLoader::GetScreenWidth (void) const
 
 int TerrainLoader::GetScreenHeight (void) const
 	{ return screen.h; }
+
+//-----------------------------------------------------------------------
+
+int TerrainLoader::GetMaxScore (void) const
+	{ return terrain.maxScore; }
 
 //-----------------------------------------------------------------------
 

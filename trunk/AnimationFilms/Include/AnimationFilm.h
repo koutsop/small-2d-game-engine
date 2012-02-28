@@ -10,19 +10,19 @@ namespace engine {
 class AnimationFilm {
 public:
 	byte					GetTotalFrames (void) const;
-    Bitmap					GetBitmap (void) const;
+    Bitmap*					GetBitmap (void) const;
     const std::string&	 	GetId (void) const;
     const Rect&				GetFrameBox (byte frameNo) const;
-    void					DisplayFrame (Bitmap dest, const Point& at, byte frameNo) const;
+    void					DisplayFrame (Bitmap* dest, const Point& at, byte frameNo) const;
 	void					DisplayFrame (const Point& at, byte frameNo) const;
 								
 	AnimationFilm (void);
-	AnimationFilm (Bitmap bitmap_, const RectVec & bbs, const std::string& id_);
+	AnimationFilm (Bitmap* bitmap_, const RectVec & bbs, const std::string& id_);
 
 
 private:
     RectVec		boxes;
-    Bitmap		bitmap;
+    Bitmap*		bitmap;
     std::string	id;
 
 };

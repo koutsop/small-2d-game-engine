@@ -16,7 +16,7 @@ public:
 
 	static bool			Register (Sprite * s);
 	static void			Clear (void);	//marks all sprites as dead
-	static void			Display (Bitmap source = (Bitmap)0);
+	static void			Display (Bitmap* source = (Bitmap*)0);
 	static bool			Cancel (const std::string& id); //marks the sprite as dead
 	//static void			RemoveDeadSprites (void);
 	static const SpriteList	
@@ -46,8 +46,8 @@ private:
 	};
 
 	struct DisplayFunctor : public std::unary_function<String2SpritePair, void> {
-		engine::Bitmap source;
-		DisplayFunctor (engine::Bitmap s) : source (s) {}
+		engine::Bitmap* source;
+		DisplayFunctor (engine::Bitmap* s) : source (s) {}
 
 		void operator() (const String2SpritePair & p){ 
 			if (p.second->IsVisible())

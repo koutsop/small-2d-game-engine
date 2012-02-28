@@ -7,7 +7,7 @@
 namespace engine {
 	//////////////////////////////////////////
 	//	typedef
-	typedef ALLEGRO_BITMAP * Bitmap;
+	typedef ALLEGRO_BITMAP Bitmap;
 
 	//-----------------------------------------------------------------------
 
@@ -23,28 +23,28 @@ namespace engine {
 
 	//-----------------------------------------------------------------------
 
-	Bitmap	LoadBitmap (const std::string& path);	
+	Bitmap*	LoadBitmap (const std::string& path);	
 
 	//-----------------------------------------------------------------------
 
-	void	DestroyBitmap (Bitmap);		
+	void	DestroyBitmap (Bitmap* b);		
 
 	//-----------------------------------------------------------------------
 
-	void	DrawBitmap (Bitmap b, const Point& at);
-	void	DrawBitmap (Bitmap b, int x, int y);
+	void	DrawBitmap (Bitmap* b, const Point& at);
+	void	DrawBitmap (Bitmap* b, int x, int y);
 
 	//-----------------------------------------------------------------------
 
-	void	DrawSubBitmap (Bitmap source, const Rect & rect, const Point& at);
+	void	DrawSubBitmap (Bitmap* source, const Rect & rect, const Point& at);
 
 	//-----------------------------------------------------------------------
 
-	void	MaskedDraw (Bitmap source, Bitmap dest, const Rect & rect, const Point& at); 
+	void	MaskedDraw (Bitmap* source, Bitmap* dest, const Rect & rect, const Point& at); 
 
 	//-----------------------------------------------------------------------
 
-	void	SetCanvas (Bitmap b);
+	void	SetCanvas (Bitmap* b);
 
 	//-----------------------------------------------------------------------
 
@@ -52,7 +52,7 @@ namespace engine {
 	
 	//-----------------------------------------------------------------------
 
-	void	ConvertMaskToAlpha (Bitmap bitmap, int r, int g, int b);
+	void	ConvertMaskToAlpha (Bitmap* bitmap, int r, int g, int b);
 
 	//-----------------------------------------------------------------------
 	

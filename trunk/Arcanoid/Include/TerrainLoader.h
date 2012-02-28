@@ -16,6 +16,7 @@ public:
 	engine::byte			GetNumberOfLevels (void) const;
 	int						GetScreenWidth (void) const;
 	int						GetScreenHeight (void) const;
+	int						GetMaxScore (void) const;
 	bool					IsFullScreen (void) const;
 	const engine::Rect&		GetTerrainBoundaries (void) const;
 	const engine::Point&	GetScorePos (void) const;
@@ -32,10 +33,6 @@ public:
 	const std::string&		GetGameOverImgPath (void) const;
 
 private:
-	void					DisplayLife (engine::Bitmap dest);
-	void					DisplayLevel (engine::Bitmap dest);
-	void					DisplayScore (engine::Bitmap dest);
-
 	void					LoadLifes (engine::ConfigFile& config);
 	void					LoadLevels (engine::ConfigFile& config);
 	void					DisplayScore (engine::ConfigFile& config);
@@ -49,11 +46,13 @@ private:
 							);
 
 	struct TerrainInfo {
+		int				maxScore;
 		engine::Rect	bound;
 		std::string		bgImg;
 		std::string		pauseImg;
 		std::string		gameover;
 		TerrainInfo (void) : 
+			maxScore(0),
 			bound	(), 
 			bgImg	(""), 
 			pauseImg(""),

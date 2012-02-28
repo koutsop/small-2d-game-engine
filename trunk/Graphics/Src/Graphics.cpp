@@ -13,7 +13,7 @@
 namespace engine {
 
 static bool isInitialized			= false;
-static Bitmap canvas				= (Bitmap)0;
+static Bitmap* canvas				= (Bitmap*)0;
 static ALLEGRO_DISPLAY * display	= (ALLEGRO_DISPLAY *)0;
 
 
@@ -23,7 +23,7 @@ void InitialiseGraphics (void) {
 	if (!isInitialized) {
 		CHECK_ALLEGRO_COMPONENT(al_init());
 		CHECK_ALLEGRO_COMPONENT(al_init_image_addon());
-		canvas	= (Bitmap)0;
+		canvas	= (Bitmap*)0;
 		display	= (ALLEGRO_DISPLAY *)0;
 	}
 
@@ -55,37 +55,37 @@ void DestroyDisplay (void) {
 
 //-----------------------------------------------------------------------
 
-Bitmap	LoadBitmap (const std::string& path) 
+Bitmap*	LoadBitmap (const std::string& path) 
 	{ return al_load_bitmap(path.c_str()); }
 
 //-----------------------------------------------------------------------
 
-void DestroyBitmap (Bitmap b) { 
+void DestroyBitmap (Bitmap* b) { 
 	assert(b);
 	al_destroy_bitmap(b);
-	b = (Bitmap)0;
+	b = (Bitmap*)0;
 }
 
 //-----------------------------------------------------------------------
 
-void DrawBitmap (Bitmap b, const Point& at) 
+void DrawBitmap (Bitmap* b, const Point& at) 
 	{ DrawBitmap(b, at.x, at.y); }
 
-void DrawBitmap (Bitmap b, int x, int y) {
+void DrawBitmap (Bitmap* b, int x, int y) {
 	assert (display && b);
 	al_draw_bitmap(b, x, y, 0);
 }
 
 //-----------------------------------------------------------------------
 
-void DrawSubBitmap (Bitmap source, const Rect & rect, const Point& at) {
+void DrawSubBitmap (Bitmap* source, const Rect & rect, const Point& at) {
 	assert(display);
 	al_draw_bitmap_region(source, rect.x, rect.y, rect.w, rect.h, at.x, at.y, 0);
 }
 
 //-----------------------------------------------------------------------
 
-void MaskedDraw (Bitmap source, Bitmap dest, const Rect & rect, const Point& at) {
+void MaskedDraw (Bitmap* source, Bitmap* dest, const Rect & rect, const Point& at) {
 	assert(display);
 	if (canvas != dest)
 		al_set_target_bitmap(dest);
@@ -97,7 +97,7 @@ void MaskedDraw (Bitmap source, Bitmap dest, const Rect & rect, const Point& at)
 
 //-----------------------------------------------------------------------
 
-void SetCanvas (Bitmap b) {
+void SetCanvas (Bitmap* b) {
 	assert(b && display);
 	al_set_target_bitmap(canvas = b);
 }
@@ -111,7 +111,7 @@ void SetBufferAsCanvas (void) {
 
 //-----------------------------------------------------------------------
 
-void ConvertMaskToAlpha (Bitmap bitmap, int r, int g, int b) {
+void ConvertMaskToAlpha (Bitmap* bitmap, int r, int g, int b) {
 	assert(display);
 	al_convert_mask_to_alpha(bitmap, al_map_rgb(r, g, b));
 }

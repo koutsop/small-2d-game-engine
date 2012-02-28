@@ -38,7 +38,7 @@ void SpriteHolder::Clear (void) {
 }
 //-------------------------------------------------------------------------------------------
 
-void SpriteHolder::Display (Bitmap source) {
+void SpriteHolder::Display (Bitmap* source) {
 	std::for_each(
 		str2sprite.begin(),
 		str2sprite.end(),

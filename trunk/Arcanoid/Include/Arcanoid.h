@@ -29,9 +29,9 @@ private:
 	bool						isPaused;
 	TerrainLoader				terrain;
 	engine::Font				font;
-	engine::Bitmap				bg;
-	engine::Bitmap				pause;
-	engine::Bitmap				gameover;
+	engine::Bitmap*				bg;
+	engine::Bitmap*				pause;
+	engine::Bitmap*				gameover;
 	engine::FPSCalculator		fps;
 	engine::AnimationFilmHolder*films;
 	

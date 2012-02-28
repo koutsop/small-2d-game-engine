@@ -13,14 +13,14 @@ public:
     BitmapLoader (void){}
 	~BitmapLoader();
 
-	Bitmap Load (const std::string& path);
+	Bitmap* Load (const std::string& path);
 
 
 private:
-    typedef std::map<std::string, Bitmap> BitmapMap;
+    typedef std::map<std::string, Bitmap*> BitmapMap;
     BitmapMap bitmaps;
 
-    Bitmap	GetBitmap (const std::string path) const;
+    Bitmap*	GetBitmap (const std::string path) const;
 };
 
 

@@ -30,7 +30,7 @@ void Font::CleanUp (void){
 
 Font::Font (int size) : font ((ALLEGRO_FONT*)0) {
 	font = al_load_ttf_font(
-				"./../../Graphics/Fonts/AirmoleAntique.ttf", 
+				"./../../Graphics/Fonts/Alako-Bold.ttf", 
 				size, 
 				ALLEGRO_TTF_NO_KERNING
 			);

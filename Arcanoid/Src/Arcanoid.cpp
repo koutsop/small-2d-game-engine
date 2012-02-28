@@ -18,9 +18,9 @@ Arcanoid::Arcanoid ()
 :	isPaused(false),
 	terrain (),
 	font	(20),
-	bg		((engine::Bitmap)0),
-	pause	((engine::Bitmap)0),
-	gameover((engine::Bitmap)0),
+	bg		((engine::Bitmap*)0),
+	pause	((engine::Bitmap*)0),
+	gameover((engine::Bitmap*)0),
 	fps		(),
 	films	((engine::AnimationFilmHolder*)0)
 {}
@@ -96,7 +96,7 @@ void Arcanoid::DisplayScoreLevelLife (void) {
 		terrain.GetScorePos().x, 
 		terrain.GetScorePos().y, 
 		engine::Font::TextAlignLEFT, 
-		engine::string_cast(1453)
+		engine::string_cast(99999999)
 	);
 
 	font.DrawText(
@@ -115,7 +115,7 @@ void Arcanoid::DisplayAll (void) {
 		//Draw Sprites and stats
 		for (int i = 0; i < 200; ++i)
 			engine::SpriteHolder::Display();
-		//DisplayScoreLevelLife();
+		DisplayScoreLevelLife();
 	}
 	else
 		engine::DrawBitmap(gameover, engine::Point(0, 0));

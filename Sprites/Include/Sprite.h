@@ -35,7 +35,7 @@ public:
 	const std::string& 		
 					GetId (void) const; 
 
-	void			Display (Bitmap dest);
+	void			Display (Bitmap* dest);
 	virtual void	Move (Dim x, Dim y) = 0;
 	virtual bool	CollisionCheck (Sprite* s);
     

@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <iterator>
 #include <algorithm>
+
 #include "Utility.h"
 #include "ConfigFile.h"
 #include "BrickHolder.h"
@@ -14,12 +16,14 @@
 engine::delay_t						BrickHolder::delay = 2000;
 BrickHolder::Brick2AnimatorMapping	BrickHolder::bricks;
 
-void BrickHolder::LoadLevel (engine::AnimationFilm * film, const std::string & path) {
+//-----------------------------------------------------------------------
+
+unsigned int BrickHolder::LoadLevel (engine::AnimationFilm * film, const std::string & path) {
 	Clear();
+	unsigned int brickId = 0;
 	engine::ConfigFile config;
 
 	if (config.LoadFile(path)) {
-		unsigned int brickId = 0;
 		const char * section = config.GetFistSection();
 		
 		while (section) {
@@ -40,12 +44,17 @@ void BrickHolder::LoadLevel (engine::AnimationFilm * film, const std::string & p
 				engine::MovingAnimation * animation = new engine::MovingAnimation(x, y, 1, true, brickId++);
 				engine::MovingAnimator * animator	= new engine::MovingAnimator();
 				animator->Start(b, animation, delay);//2000
+				engine::AnimatorManager::Register(animator);
+				engine::AnimatorManager::MarkAsRunning(animator);
 				bricks[b] = animator;
 			}
 			section = config.GetNextSection();
 		}		
-	}	
+	}
+	return brickId;
 }
+
+//-----------------------------------------------------------------------
 
 bool BrickHolder::Cancel (Brick *b) {
 	assert(b);
@@ -53,6 +62,7 @@ bool BrickHolder::Cancel (Brick *b) {
 	Brick2AnimatorMapping::iterator i	= bricks.find(b);
 
 	if (i != bricks.end()) {
+		b->SetVisibility(false);
 		i->second->GetAnimation()->Destroy();
 		engine::SpriteHolder::Cancel(b->GetId());
 		engine::AnimatorManager::Cancel(i->second);
@@ -62,12 +72,30 @@ bool BrickHolder::Cancel (Brick *b) {
 	return result;
 }
 
+//-----------------------------------------------------------------------
+
+BrickList BrickHolder::GetBricks (void) {
+	BrickList list;
+	std::transform(
+		bricks.begin(), 
+		bricks.end(), 
+		std::back_inserter(list), 
+		engine::RetrieveKey()
+	);
+	return list; 
+}
+
+//-----------------------------------------------------------------------
+
 engine::delay_t BrickHolder::GetDelay (void)
 	{ return delay; }
 
+//-----------------------------------------------------------------------
 
 void BrickHolder::SetDelay (engine::delay_t d)
 	{ delay = d; }
+
+//-----------------------------------------------------------------------
 
 void BrickHolder::Clear (void) {
 	std::for_each(
@@ -76,6 +104,8 @@ void BrickHolder::Clear (void) {
 		ClearFunctor()
 	);
 }
+
+//-----------------------------------------------------------------------
 
 void BrickHolder::ClearFunctor::operator() (std::pair<Brick *, engine::Animator *> p) {
 	p.second->GetAnimation()->Destroy();

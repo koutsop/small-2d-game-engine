@@ -27,6 +27,15 @@ int	Brick::GetScore (void) const
 
 //-----------------------------------------------------------------------
 
+void Brick::Hit (void) {
+	assert (hits != 0);
+
+	if (hits != -1 && hits > 0)
+		--hits;
+}
+
+//-----------------------------------------------------------------------
+
 int	Brick::GetHits (void) const  
 	{ return hits; }
 
@@ -39,4 +48,4 @@ bool Brick::IsUnbreakable (void) const
 
 void Brick::Move (engine::Dim x, engine::Dim y) {
 	assert (!"not suported yet");
-}
+}	

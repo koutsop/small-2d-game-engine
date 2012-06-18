@@ -28,6 +28,7 @@ public:
 	const std::string&		GetFilmsPath (void) const;
 	const std::string&		GetBallFilmID (void) const;
 	const std::string&		GetBrickFilmID (void) const;
+	const std::string&		GetBoardFilmID (void) const;
 	const std::string&		GetBackgroundImgPath (void) const;
 	const std::string&		GetPausedImgPath (void) const;
 	const std::string&		GetGameOverImgPath (void) const;
@@ -70,6 +71,14 @@ private:
 		std::string filmsPath;
 		std::string brickFilmID;
 		std::string ballFilmID;
+		std::string boardFilmID;
+
+		FilmsInfo () :
+			filmsPath(""), 
+			brickFilmID(""), 
+			ballFilmID(""), 
+			boardFilmID("") 
+		{}
 	};
 
 	struct LevelsInfo {

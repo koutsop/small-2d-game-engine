@@ -54,6 +54,7 @@ void TerrainLoader::LoadFilmsInfo (engine::ConfigFile& config) {
 	films.filmsPath		= config.GetValue("FILMS", "path");	
 	films.ballFilmID	= config.GetValue("FILMS", "ball");	
 	films.brickFilmID	= config.GetValue("FILMS", "brick");	
+	films.boardFilmID	= config.GetValue("FILMS", "board");
 }
 
 //-----------------------------------------------------------------------
@@ -147,6 +148,11 @@ const std::string& TerrainLoader::GetBallFilmID (void) const
 
 const std::string& TerrainLoader::GetBrickFilmID (void) const
 	{ return films.brickFilmID; }
+
+//-----------------------------------------------------------------------
+
+const std::string& TerrainLoader::GetBoardFilmID (void) const
+	{ return films.boardFilmID; }
 
 //-----------------------------------------------------------------------
 

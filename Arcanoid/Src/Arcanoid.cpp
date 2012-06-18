@@ -1,5 +1,6 @@
 #include <iostream>
 #include <assert.h>
+#include <functional>
 
 #include "Clock.h"
 #include "Common.h"
@@ -10,6 +11,9 @@
 #include "KeyboardInput.h"
 #include "AnimationFilm.h"
 #include "FPSCalculator.h"
+#include "MovingAnimator.h"
+#include "AnimatorManager.h"
+#include "MovingAnimation.h"
 #include "CollisionChecker.h"
 #include "DestructionManager.h"
 
@@ -27,7 +31,7 @@ Arcanoid::Arcanoid ()
 
 void Arcanoid::Start(const std::string& path) {
 	Init(path);
-	//collision Register
+	CollisionRegister();
 	GameLoop();
 	CleanUp();
 }
@@ -40,9 +44,10 @@ void Arcanoid::GameLoop (void) {
 		engine::Clock::SetGameTime();
 		DisplayAll();
 		InputManagement();
+		engine::AnimatorManager::Progress(engine::Clock::GetGameTime());
 		//AnimationProgress();
 		//ArtificialIntelligence()
-		//engine::CollisionChecker::Check();
+		engine::CollisionChecker::Check();
 		FPS();
 		//SystemLoopDispatching();
 	}
@@ -66,6 +71,41 @@ void Arcanoid::Init (const std::string& path) {
 	//assert(bg && buffer && pause && gameover);
 	films		= new engine::AnimationFilmHolder(terrain.GetFilmsPath());
 	BrickHolder::LoadLevel(&films->GetFilm(terrain.GetBrickFilmID()), terrain.GetNextLevel());
+
+	CreateTheBall();
+	CreateTheBoard();
+}
+
+//-----------------------------------------------------------------------
+
+void Arcanoid::CreateTheBall (void) {
+	ball = new Ball (
+				terrain.GetInitBallPosition().x,
+				terrain.GetInitBallPosition().y,
+				&films->GetFilm(terrain.GetBallFilmID()),
+				"ball",
+				terrain.GetTerrainBoundaries()
+			);
+	engine::SpriteHolder::Register(ball);
+
+	engine::MovingAnimation * animation		= new engine::MovingAnimation(0, 0, 20, true, 0);
+	engine::MovingAnimator * ballAnimator	= new engine::MovingAnimator();
+	ballAnimator->Start(ball, animation, 0);
+	engine::AnimatorManager::Register(ballAnimator);
+	engine::AnimatorManager::MarkAsRunning(ballAnimator);
+}
+
+//-----------------------------------------------------------------------
+
+void Arcanoid::CreateTheBoard (void) {
+	board = new Board (
+				terrain.GetInitBoardPosition().x,
+				terrain.GetInitBoardPosition().y,
+				&films->GetFilm(terrain.GetBoardFilmID()),
+				"board",
+				terrain.GetTerrainBoundaries()
+			);
+	engine::SpriteHolder::Register(board);
 }
 
 //-----------------------------------------------------------------------
@@ -111,10 +151,7 @@ void Arcanoid::DisplayScoreLevelLife (void) {
 void Arcanoid::DisplayAll (void) {
 	if (!isPaused) {
 		engine::DrawBitmap(bg, engine::Point(0, 0));
-
-		//Draw Sprites and stats
-		for (int i = 0; i < 200; ++i)
-			engine::SpriteHolder::Display();
+		engine::SpriteHolder::Display();
 		DisplayScoreLevelLife();
 	}
 	else
@@ -126,7 +163,19 @@ void Arcanoid::DisplayAll (void) {
 //-----------------------------------------------------------------------
 
 void Arcanoid::CollisionRegister (void) {
-	//engine::CollisionChecker::Register();
+	engine::CollisionChecker::Register(
+		ball,
+		board,
+		std::bind(&Ball::CollideWithBoard, ball, std::placeholders::_1)
+	);
+
+	BrickList bricks = BrickHolder::GetBricks();
+	for (BrickList::iterator i = bricks.begin(); i != bricks.end(); ++i)
+		engine::CollisionChecker::Register(
+			ball,
+			*i,
+			std::bind(&Ball::CollideWithBrick, ball, std::placeholders::_1)
+		);
 }
 
 //-----------------------------------------------------------------------

@@ -12,6 +12,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Src\Arcanoid.cpp" />
+    <ClCompile Include="..\Src\Ball.cpp" />
+    <ClCompile Include="..\Src\Board.cpp" />
     <ClCompile Include="..\Src\Brick.cpp" />
     <ClCompile Include="..\Src\BrickHolder.cpp" />
     <ClCompile Include="..\Src\main.cpp" />

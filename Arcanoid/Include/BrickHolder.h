@@ -17,10 +17,10 @@
 class BrickHolder {
 
 public:
-	static void				LoadLevel (engine::AnimationFilm * film, const std::string & path);
+	static unsigned int		LoadLevel (engine::AnimationFilm * film, const std::string & path);
 	static bool				Cancel (Brick *b);
 	static void				Clear (void);
-
+	static BrickList		GetBricks (void);
 	static engine::delay_t	GetDelay (void);
 	static void				SetDelay (engine::delay_t d);
 

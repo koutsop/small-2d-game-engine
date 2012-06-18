@@ -11,7 +11,7 @@ namespace engine {
 class CollisionChecker {
 public:
 	///--- class CollisionChecker Typedefs
-	typedef void (*CollideCallback)(Sprite * s);
+	typedef std::function<void (Sprite*)> CollideCallback;
 
 	///--- class CollisionChecker API
     static void Register (Sprite* s1, Sprite* s2, CollideCallback c);
@@ -20,16 +20,15 @@ public:
 
 private:
 	///--- class CollisionChecker Typedefs
-
-	typedef std::pair<Sprite*, Sprite*> Pair;
+	typedef std::pair<Sprite*, Sprite*> SpritePair;
 
 	//----------------------------
 	//-- struct CollisionChecker::CollisionPair
 
 	struct CollisionPair {
-		Pair			sprites;
+		SpritePair		sprites;
 		CollideCallback collide;
-		CollisionPair (const Pair & p, CollideCallback c) : sprites(p), collide(c) {}
+		CollisionPair (const SpritePair & p, CollideCallback c) : sprites(p), collide(c) {}
 	};
 
 	//----------------------------

@@ -46,8 +46,8 @@ bool Sprite::IsVisible (void) const
 
 bool Sprite::CollisionCheck (Sprite* s) {
 	assert(s);
-	return !(	(x				> s->GetX() + s->GetWidth())		||
-				(x + frameBox.w < s->GetX())						||
+	return !(	(x				> s->GetX() + s->GetWidth())	||
+				(x + frameBox.w < s->GetX())					||
 				(y				> s->GetY() + s->GetHeight())	||
 				(y + frameBox.h < s->GetY()) );
 }

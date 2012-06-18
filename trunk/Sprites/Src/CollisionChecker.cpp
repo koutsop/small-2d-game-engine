@@ -30,7 +30,9 @@ void CollisionChecker::Check (void) {
 
 	while (start != end) {	//mporei na kanoume cancel eno trexei to loop
 		CollisionPair & p = *start++;
-		if (p.sprites.first->CollisionCheck(p.sprites.second))
+		if (p.sprites.first->IsVisible()	&&
+			p.sprites.second->IsVisible()	&&
+			p.sprites.first->CollisionCheck(p.sprites.second))
 			p.collide(p.sprites.second);
 	}	
 }

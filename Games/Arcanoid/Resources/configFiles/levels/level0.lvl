@@ -1,0 +1,39 @@
+[brick 0]
+frameNo		= 4
+x 			= 4
+y 			= 4
+unbreakable	= false
+hits		= 1
+score		= 10
+
+[brick 1]
+frameNo		= 3
+x 			= 52
+y 			= 4
+unbreakable	= false
+hits		= 1
+score		= 10
+
+[brick 2]
+frameNo		= 2
+x 			= 100
+y 			= 4
+unbreakable	= false
+hits		= 1
+score		= 10
+
+[brick 3]
+frameNo		= 1
+x 			= 148
+y 			= 4
+unbreakable	= false
+hits		= 1
+score		= 10
+
+[brick 4]
+frameNo		= 0
+x 			= 196
+y 			= 4
+unbreakable	= false
+hits		= 1
+score		= 10

@@ -1,0 +1,10 @@
+Allegro 5 Reference manual: https://www.allegro.cc/manual/5/index.html
+How to exam the contents of a DLL: dumpbin /exports Graphics-debug.dll
+
+1) Add file managemt:
+	http://wiki.allegro.cc/index.php?title=Loading_Resources_(Troubleshooting)
+	https://www.allegro.cc/manual/5/path.html
+	https://www.allegro.cc/manual/5/al_get_standard_path
+2) Add Networking
+3) Support logfiles
+	https://www.allegro.cc/forums/thread/611548

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <OutDir>$(SolutionDir)lib\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)objs\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ALLEGRO5)\Include;.\..\Include;.\..\..\Utility\Include;.\..\..\Sprites\Include;.\..\..\Graphics\Include;.\..\..\Animators\Include;.\..\..\Animations\Include;.\..\..\AnimationFilms\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_UNICODE;UNICODE;ENGINE_EXPORTS;ALLEGRO_STATICLINK;ALLEGRO_NO_MAGIC_MAIN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Lib>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+    </Lib>
+    <Link>
+      <AdditionalLibraryDirectories>$(ENGINE)\lib;$(ALLEGRO5)\lib</AdditionalLibraryDirectories>
+    </Link>
+    <PreBuildEvent>
+      <Command>del "$(SolutionDir)Output_Dir\bin\$(TargetName).dll"
+del "$(SolutionDir)Output_Dir\lib\$(TargetName).lib"
+del "$(SolutionDir)Output_Dir\lib\$(TargetName).pdb"</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>copy /Y "$(OutDir)$(TargetName).dll" "$(SolutionDir)Output_Dir\bin\$(TargetName).dll" 
+copy /Y "$(OutDir)$(TargetName).lib" "$(SolutionDir)Output_Dir\lib\$(TargetName).lib" 
+copy /Y "$(OutDir)$(TargetName).pdb" "$(SolutionDir)Output_Dir\lib\$(TargetName).pdb"
+copy /Y ".\..\Include\*.h" "$(SolutionDir)Output_Dir\include\." </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup />
+</Project>

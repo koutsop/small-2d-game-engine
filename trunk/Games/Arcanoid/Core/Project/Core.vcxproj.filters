@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Resource Files\configFiles">
+      <UniqueIdentifier>{559174fb-b2e7-41de-8e62-605dc52e15fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\images">
+      <UniqueIdentifier>{1c2474aa-dc76-4cd6-8dc1-9434286f4f56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\configFiles\bboxes">
+      <UniqueIdentifier>{08b2b408-1b80-433e-bf67-92f363a60432}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\configFiles\levels">
+      <UniqueIdentifier>{d82e12df-7d55-471a-b5e0-1be730efff33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\images\films">
+      <UniqueIdentifier>{f0911f3b-02c3-4cbb-bd22-f9f58d9dd049}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Include\Arcanoid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\Ball.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\Board.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\Brick.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\BrickHolder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\Nain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\TerrainLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Src\Arcanoid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Ball.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Board.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\Brick.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\BrickHolder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\TerrainLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Resources\configFiles\game.cfg">
+      <Filter>Resource Files\configFiles</Filter>
+    </None>
+    <None Include="..\..\Resources\configFiles\films.cfg">
+      <Filter>Resource Files\configFiles</Filter>
+    </None>
+    <None Include="..\..\Resources\configFiles\bboxes\powerupsFilm.cfg">
+      <Filter>Resource Files\configFiles\bboxes</Filter>
+    </None>
+    <None Include="..\..\Resources\configFiles\bboxes\ballFilm.cfg">
+      <Filter>Resource Files\configFiles\bboxes</Filter>
+    </None>
+    <None Include="..\..\Resources\configFiles\bboxes\ballsFilm.cfg">
+      <Filter>Resource Files\configFiles\bboxes</Filter>
+    </None>
+    <None Include="..\..\Resources\configFiles\bboxes\boardFilm.cfg">
+      <Filter>Resource Files\configFiles\bboxes</Filter>
+    </None>
+    <None Include="..\..\Resources\configFiles\bboxes\bricksFilm.cfg">
+      <Filter>Resource Files\configFiles\bboxes</Filter>
+    </None>
+    <None Include="..\..\Resources\configFiles\bboxes\explosion.cfg">
+      <Filter>Resource Files\configFiles\bboxes</Filter>
+    </None>
+    <None Include="..\..\Resources\configFiles\bboxes\nainSpin.cfg">
+      <Filter>Resource Files\configFiles\bboxes</Filter>
+    </None>
+    <None Include="..\..\Resources\configFiles\bboxes\numbersFilm.cfg">
+      <Filter>Resource Files\configFiles\bboxes</Filter>
+    </None>
+    <None Include="..\..\Resources\configFiles\bboxes\pauseFilm.cfg">
+      <Filter>Resource Files\configFiles\bboxes</Filter>
+    </None>
+    <None Include="..\..\Resources\configFiles\levels\level0.lvl">
+      <Filter>Resource Files\configFiles\levels</Filter>
+    </None>
+    <None Include="..\..\Resources\images\salami.bmp">
+      <Filter>Resource Files\images</Filter>
+    </None>
+    <None Include="..\..\Resources\images\gameover.bmp">
+      <Filter>Resource Files\images</Filter>
+    </None>
+    <None Include="..\..\Resources\images\GameScreen.bmp">
+      <Filter>Resource Files\images</Filter>
+    </None>
+    <None Include="..\..\Resources\images\films\powerupsFilm.png">
+      <Filter>Resource Files\images\films</Filter>
+    </None>
+    <None Include="..\..\Resources\images\films\ballsFilm.png">
+      <Filter>Resource Files\images\films</Filter>
+    </None>
+    <None Include="..\..\Resources\images\films\boardFilm.png">
+      <Filter>Resource Files\images\films</Filter>
+    </None>
+    <None Include="..\..\Resources\images\films\bricksFilm.png">
+      <Filter>Resource Files\images\films</Filter>
+    </None>
+    <None Include="..\..\Resources\images\films\explosion.png">
+      <Filter>Resource Files\images\films</Filter>
+    </None>
+    <None Include="..\..\Resources\images\films\nainSpin.png">
+      <Filter>Resource Files\images\films</Filter>
+    </None>
+    <None Include="..\..\Resources\images\films\pauseFilm.png">
+      <Filter>Resource Files\images\films</Filter>
+    </None>
+  </ItemGroup>
+</Project>

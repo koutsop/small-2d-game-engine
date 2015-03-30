@@ -1,0 +1,1 @@
+A small 2D game engine based on CS-454 lectures (www.csd.uoc.gr/~hy454)
